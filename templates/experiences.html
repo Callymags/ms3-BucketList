@@ -1,7 +1,5 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% block content %}
-
-    <h2>Extended</h2>
 
     {% for experience in experiences %}
         {{ experience.experience_name }}<br>
@@ -11,4 +9,5 @@
         {{ experience.completed_by }}<br>
         {{ experience.description }}<br>
     {% endfor %}
+    
 {% endblock %}
