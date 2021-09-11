@@ -1,9 +1,29 @@
+/* -----------------NAVBAR----------------- */
 .nav-style {
     background-color: #1a2238;
     color: #f8f8fb;
 }
 
+.site-name {
+    margin-top: 0.5rem;
+}
+
 .offcanvas {
     background-color: #1a2238;
 }
+
+.offcanvas-close-btn {
+    font-size: 1.5rem;
+}
+
+.dropdown-menu {
+    background-color: #1a2238;
+    color:#f8f8fb;
+  }
+
+.dropdown-menu li a {
+    color: white;
+}
+
+
 

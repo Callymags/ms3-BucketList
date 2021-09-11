@@ -21,11 +21,12 @@
 <body>
 
     <header>
-        <nav class="navbar navbar-dark navbar-expand-lg nav-style fixed-top">
+        <nav class="navbar navbar-dark navbar-expand-lg nav-style fixed-top text-shadow">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
-                    <img src="/static/images/ms3-bucket-brand.png" alt="" width="40" height="40" class="d-inline-block align-text-top">
-                    Bucket List
+                    <img src="/static/images/ms3-bucket-brand.png" alt="" width="40" height="40" 
+                    class="d-inline-block align-text-middle">
+                    <span class="site-name">Bucket List</span> 
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
@@ -40,6 +41,7 @@
                         </h5>
                         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
                             aria-label="Close">
+                            <i class="offcanvas-close-btn far fa-window-close"></i>
                         </button>
                     </div>
                     <div class="offcanvas-body">
@@ -51,22 +53,24 @@
                                 <a class="nav-link" href="#">Log In</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Register</a>
+                                <a class="nav-link" href="#">Register</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Search</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
-                                    Dropdown
+                                    Account
                                 </a>
-                                <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <ul class="nav-dropdown-style dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+                                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                                    <li><a class="dropdown-item" href="#">Create Experience</a></li>
                                 </ul>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">Log Out</a>
+                            </li>                 
                         </ul>
                     </div>
                 </div>
