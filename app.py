@@ -23,10 +23,10 @@ mongo.init_app(app)
 
 
 @app.route('/')
-@app.route('/get_experiences')
-def get_experiences():
+@app.route('/get_index')
+def get_index():
     experiences = mongo.db.experiences.find()
-    return render_template('experiences.html', experiences=experiences)
+    return render_template('index.html', experiences=experiences)
 
 
 if __name__ == '__main__':
