@@ -6,12 +6,14 @@ h3 {
     font-family: 'Crimson Text', serif; 
 } 
 
-p,
-span, 
-a {
+body {
     font-family: 'Work Sans', sans-serif;
-}
 
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+}
 /* -----------------NAVBAR----------------- */
 .nav-style {
     background-color: #1a2238;
@@ -45,6 +47,8 @@ a {
     color: #f8f8fb;
     padding-top: 1rem;
     padding-bottom: 1rem;
+
+    margin-top: auto;
 }
 
 .social-links {
@@ -53,6 +57,30 @@ a {
 
 
 /* -----------------REGISTER----------------- */
+
+.register-container {
+    background: url(../images/hero-image.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+@media screen and (min-height: 800px) {
+    .register-container {
+        height: 90vh;
+    }
+    
+}
+
+.card {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+}
+
+form {
+    font-size: 1.3rem;
+}
 .register-btn {
     background-color: #ff6a3d;
 }
