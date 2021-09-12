@@ -1,3 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text&family=Work+Sans&display=swap');
+
+h1, 
+h2,
+h3 {
+    font-family: 'Crimson Text', serif; 
+} 
+
+p,
+span, 
+a {
+    font-family: 'Work Sans', sans-serif;
+}
+
 /* -----------------NAVBAR----------------- */
 .nav-style {
     background-color: #1a2238;
@@ -25,5 +39,16 @@
     color: white;
 }
 
+/* -----------------FOOTER----------------- */
+.footer-style {
+    background-color: #1a2238;
+    color: #f8f8fb;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.social-links {
+    font-size: 1.5rem;
+}
 
 
