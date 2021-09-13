@@ -66,7 +66,7 @@
                                     Account
                                 </a>
                                 <ul class="nav-dropdown-style dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
-                                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                                    <li><a class="dropdown-item" href="{{ url_for('auth.profile', username=session['user']) }}">Profile</a></li>
                                     <li><a class="dropdown-item" href="#">Create Experience</a></li>
                                 </ul>
                             </li>
