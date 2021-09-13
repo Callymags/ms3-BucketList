@@ -22,7 +22,8 @@ body {
 .flashes {
     line-height: 3;
     background-color: #ff6a3d;
-    width: 100%;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
 }
 
 /* -----------------NAVBAR----------------- */
