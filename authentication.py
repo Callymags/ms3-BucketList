@@ -55,4 +55,29 @@ def register():
         flash('Registration Successful!')
         
     return render_template("register.html")
-        
+
+
+@auth.route("/log_in", methods=['GET', 'POST'])
+def log_in():
+    if request.method == 'POST': 
+        # Check if username exists in db
+        existing_user = mongo.db.users.find_one(
+            {'username': request.form.get('username').lower()})
+
+        if existing_user: 
+        # Ensure hashed password matches user input 
+            if check_password_hash(
+                existing_user['password'], request.form.get('password')):
+                # Put new user into session cookie
+                session['user'] = request.form.get('username').lower()
+                flash('Welcome, {}'.format(request.form.get('username')))
+            else: 
+                # invalid password 
+                flash('Incorrect username and/or password')
+                return redirect(url_for('auth.log_in'))
+        else:
+            # username doesn't exist 
+            flash('Incorrect username and/or password')
+            return redirect(url_for('auth.log_in'))
+    
+    return render_template('login.html')

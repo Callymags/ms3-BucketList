@@ -9,20 +9,12 @@
         <div class="col-lg-8 col-md-10 offset-lg-2 offset-md-1">
             <div class="card">
                 <div class="card-body">
-                    <h1 class="text-center">Register</h1>
-                    <form method="POST" action="{{ url_for('auth.register') }}">
+                    <h1 class="text-center">Log In</h1>
+                    <form method="POST" action="{{ url_for('auth.log_in') }}">
                         <div class="mb-3">
                             <i class="fas fa-user icon-style"></i>
                             <label for="username" class="form-label">Username</label>
-                            <input type="username" name="username" class="form-control" id="username" 
-                            pattern="^[a-zA-Z0-9]{5,10}$" minlength="5" maxlength="15"
-                            title="Username must have 5-15 characters, and cannot contain special characters" required>
-                        </div>
-                        <div class="mb-3">
-                            <i class="fas fa-envelope icon-style"></i>
-                            <label for="email" class="form-label">Email address</label>
-                            <input type="email" name="email" class="form-control" id="email"
-                                aria-describedby="emailHelp" required>
+                            <input type="username" name="username" class="form-control" id="username" required>
                         </div>
                         <!-- Password pattern from w3 Schools. See contribution in ReadMe -->
                         <div class="mb-3">
@@ -34,11 +26,11 @@
                             letter, and at least 8 or more characters" required>
                         </div>
                         <div class="mb-3">
-                            <p>Already have an account?
-                                <span><a href="{{ url_for('auth.log_in') }}">Log In</a></span>
+                            <p>Don't have an account?
+                                <span><a href="{{ url_for('auth.register') }}">Register</a></span>
                             </p>
                         </div>
-                        <button type="submit" class="btn btn-lg register-btn">Register</button>
+                        <button type="submit" class="btn btn-lg register-btn">Log In</button>
                     </form>
                 </div>
             </div>
