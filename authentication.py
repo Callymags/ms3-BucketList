@@ -28,11 +28,11 @@ def register():
             # Redirect user back to register to try again
             return redirect(url_for("auth.register"))
         
-        # Check if username already exists within db
+        # Check if email already exists within db
         existing_email = mongo.db.users.find_one(
             {"email": request.form.get("email").lower()})
 
-        # Display flash message to user if username already exists
+        # Display flash message to user if email already exists
         if existing_email:
             flash("Email already exists")
             # Redirect user back to register to try again
@@ -56,5 +56,3 @@ def register():
         
     return render_template("register.html")
         
-    
-
