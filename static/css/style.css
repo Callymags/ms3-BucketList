@@ -14,6 +14,17 @@ body {
     display: flex;
     flex-direction: column;
 }
+
+#flash-section {
+    overflow-x: hidden;
+}
+
+.flashes {
+    line-height: 3;
+    background-color: #ff6a3d;
+    width: 100%;
+}
+
 /* -----------------NAVBAR----------------- */
 .nav-style {
     background-color: #1a2238;
