@@ -67,23 +67,7 @@ body {
     font-size: 1.5rem;
 }
 
-
-/* -----------------REGISTER----------------- */
-
-.register-container {
-    background: url(../images/hero-image.jpg) no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
-
-@media screen and (min-height: 800px) {
-    .register-container {
-        height: 90vh;
-    }
-    
-}
+/* -----------------FORMS----------------- */
 
 .card {
     margin-top: 4rem;
@@ -99,4 +83,53 @@ form {
 
 .icon-style {
     color: #ff6a3d;
+}
+
+
+/* -----------------REGISTER----------------- */
+
+.register-container {
+    background: url(../images/hero-image.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+@media screen and (min-height: 700px) {
+    .register-container {
+        height: 85vh;
+    }
+    
+}
+
+@media screen and (min-height: 1300px) {
+    .register-container {
+        height: 90vh;
+    }
+    
+}
+
+/* -----------------LOG IN----------------- */
+
+.login-container {
+    background: url(../images/hero-image.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+@media screen and (min-height: 700px) {
+    .login-container {
+        height: 85vh;
+    }
+    
+}
+
+@media screen and (min-height: 1300px) {
+    .login-container {
+        height: 90vh;
+    }
+    
 }
