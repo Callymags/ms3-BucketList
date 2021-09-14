@@ -10,18 +10,28 @@
             <div class="card">
                 <div class="card-body text-center">
                     <h1>Profile</h1>
-                    <h3><i class="fas fa-user icon-style"></i></h3>
-                    <h3>Username:</h3>
-                    <h3>{{ username }}</h3>
-                    <h3><i class="fas fa-envelope icon-style"></i></h3>
-                    <h3>Email:</h3>
-                    <h3>{{ email }}</h3>
-                    <h3><i class="fas fa-check-circle icon-style"></i></h3>
-                    <h3>Experiences Completed:</h3>
-                    <h3>{{ username }}</h3>
-                    <h3><i class="fas fa-plus-circle icon-style"></i></h3>
-                    <h3>Experiences Created:</h3>
-                    <h3>{{ username }}</h3>
+                    <div class="container profile-containers">
+                        <h3><i class="fas fa-user icon-style"></i></h3>
+                        <h3><strong>Username:</strong></h3>
+                        <h3><em>{{ username }}</em></h3>
+                    </div>
+                    <div class="container profile-containers">
+                        <h3><i class="fas fa-envelope icon-style"></i></h3>
+                        <h3><strong>Email:</strong></h3>
+                        <h3><em>{{ email }}</em></h3>
+                    </div>
+                    <div class="container profile-containers">
+                        <h3><i class="fas fa-check-circle icon-style"></i></h3>
+                        <h3><strong>Experiences Completed:</strong></h3>
+                        <h3><em>{{ username }}</em></h3>
+                    </div>
+                    <div class="container profile-containers">
+                        <h3><i class="fas fa-plus-circle icon-style"></i></h3>
+                        <h3><strong>Experiences Created</strong></h3>
+                        <h3><em>{{ username }}</em></h3>
+                    </div>
+                    <button type="submit" class="btn btn-lg edit-btn">Edit Profile</button>
+                    <button type="submit" class="btn btn-lg delete-btn">Delete Profile</button>
                 </div>
             </div>
         </div>

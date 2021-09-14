@@ -133,3 +133,29 @@ form {
     }
     
 }
+
+/* -----------------PROFILE----------------- */
+.profile-containers {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.edit-btn {
+    background-color: #ff6a3d;
+}
+
+.delete-btn {
+    background-color: #ff6a3d;
+}
+
+@media screen and (max-width: 370px) {
+    .edit-btn {
+        background-color: #ff6a3d;
+        margin-bottom: .5rem;
+    }
+    .delete-btn {
+        background-color: #ff6a3d;
+        margin-top: .5rem;
+    }
+    
+}
