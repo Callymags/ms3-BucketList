@@ -8,6 +8,7 @@ from database import mongo
 # Import auth blueprint from authentication file
 from authentication import auth 
 
+
 # Import environment variables only when os can find 
 # existing file path for env.py file
 if os.path.exists('env.py'):
@@ -19,7 +20,6 @@ app = Flask(__name__)
 
 # Register Blueprints
 app.register_blueprint(auth)
-
 
 app.config['MONGO_DBNAME'] = os.environ.get('MONGO_DBNAME')
 app.config['MONGO_URI'] = os.environ.get('MONGO_URI')

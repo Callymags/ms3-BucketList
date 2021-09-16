@@ -30,7 +30,7 @@
                         <h3><strong>Experiences Created</strong></h3>
                         <h3><em>{{ username }}</em></h3>
                     </div>
-                    <button type="submit" class="btn btn-lg edit-btn">Edit Profile</button>
+                    <a class="btn btn-lg edit-btn" href="{{ url_for('auth.user_profile', username=session['user']) }}" role="button">Edit Profile</a>
                     <button type="submit" class="btn btn-lg delete-btn">Delete Profile</button>
                 </div>
             </div>
