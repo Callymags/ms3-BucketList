@@ -103,17 +103,17 @@ def update_password(username):
             "update_password.html", username=username)
 
     if request.method == 'POST':
-        updated_password = generate_password_hash(request.form.get('updated-password'))
+        new_password = generate_password_hash(request.form.get('updated-password'))
 
         if check_password_hash(
             user['password'], request.form.get('existing-password')
         ):
             mongo.db.users.update_one(
                 {'username': username},
-                {'$set': {'password': updated_password}}
+                {'$set': {'password': new_password}}
             )
         flash("Password Updated Successfully")
-        return redirect(url_for("user.profile", username=username))
+        return redirect(url_for("user.profile", username=session['user']))
     else:
         flash("Passwords Do Not Match")
-        return redirect(url_for("user.update_password", username=username))
+        return redirect(url_for("user.update_password", username=session['user']))
