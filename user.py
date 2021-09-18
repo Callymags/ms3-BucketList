@@ -95,8 +95,12 @@ def profile(username):
     return render_template('profile.html', username=username, email=email)
 
 @user.route("/update_password/<username>", methods=['GET', 'POST'])
-def update_password(username):
+def update_password(username):  
     user = mongo.db.users.find_one({"username": username})
+
+    if request.method == "GET":
+        return render_template(
+            "update_password.html", username=username)
 
     if request.method == 'POST':
         updated_password = generate_password_hash(request.form.get('updated-password'))
@@ -108,10 +112,7 @@ def update_password(username):
                 {'$set': {'password': updated_password}},
             )
         flash("Password Updated Successfully")
-        return redirect(url_for("user.profile", username=username['user']))
+        return redirect(url_for("user.profile", username=username))
     else:
         flash("Passwords Do Not Match")
-        return redirect(url_for("user.update_password", username=username['user']))
-
-    return render_template(
-        'update_password.html', username=username)
+        return redirect(url_for("user.update_password", username=username))
