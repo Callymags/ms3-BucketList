@@ -9,12 +9,12 @@ from bson.objectid import ObjectId
 from database import mongo
 
 # Create Blueprint to be imported to app.py
-auth = Blueprint(
-    'auth', __name__, static_folder='static', template_folder='templates'
+user = Blueprint(
+    'user', __name__, static_folder='static', template_folder='templates'
     )
 
 
-@auth.route("/register", methods=['GET', 'POST'])
+@user.route("/register", methods=['GET', 'POST'])
 def register():
     # Check if requested method is equal to Post
     if request.method == "POST":
@@ -26,7 +26,7 @@ def register():
         if existing_user:
             flash("Username already exists")
             # Redirect user back to register to try again
-            return redirect(url_for("auth.register"))
+            return redirect(url_for("user.register"))
         
         # Check if email already exists within db
         existing_email = mongo.db.users.find_one(
@@ -36,7 +36,7 @@ def register():
         if existing_email:
             flash("Email already exists")
             # Redirect user back to register to try again
-            return redirect(url_for("auth.register"))
+            return redirect(url_for("user.register"))
 
 
         # If no existing user is found
@@ -53,12 +53,12 @@ def register():
         session['user'] = request.form.get('username').lower()
         # Display flash message to user after username is placed into session cookie
         flash('Registration Successful!')
-        return redirect(url_for('auth.user_profile', username=session['user']))
+        return redirect(url_for('user.profile', username=session['user']))
         
     return render_template("register.html")
 
 
-@auth.route("/log_in", methods=['GET', 'POST'])
+@user.route("/log_in", methods=['GET', 'POST'])
 def log_in():
     if request.method == 'POST': 
         # Check if username exists in db
@@ -73,23 +73,45 @@ def log_in():
                 session['user'] = request.form.get('username').lower()
                 flash('Welcome, {}'.format(request.form.get('username')))
                 return redirect(url_for(
-                    'auth.user_profile', username=session['user']))
+                    'user.profile', username=session['user']))
             else: 
                 # invalid password 
                 flash('Incorrect username and/or password')
-                return redirect(url_for('auth.log_in'))
+                return redirect(url_for('user.log_in'))
         else:
             # username doesn't exist 
             flash('Incorrect username and/or password')
-            return redirect(url_for('auth.log_in'))
+            return redirect(url_for('user.log_in'))
     
     return render_template('login.html')
 
-@auth.route("/user_profile/<username>", methods=['GET', 'POST'])
-def user_profile(username):
+@user.route("/profile/<username>", methods=['GET', 'POST'])
+def profile(username):
     # Grab the session user's username from db
     username = mongo.db.users.find_one(
         {'username': session['user']})['username']
     email = mongo.db.users.find_one(
         {'username': session['user']})['email']
     return render_template('profile.html', username=username, email=email)
+
+@user.route("/update_password/<username>", methods=['GET', 'POST'])
+def update_password(username):
+    user = mongo.db.users.find_one({"username": username})
+
+    if request.method == 'POST':
+        updated_password = generate_password_hash(request.form.get('updated-password'))
+        if check_password_hash(
+            user['password'], request.form.get('existing-password')
+        ):
+            mongo.db.users.update_one(
+                {'username': username},
+                {'$set': {'password': updated_password}},
+            )
+        flash("Password Updated Successfully")
+        return redirect(url_for("user.profile", username=username['user']))
+    else:
+        flash("Passwords Do Not Match")
+        return redirect(url_for("user.update_password", username=username['user']))
+
+    return render_template(
+        'update_password.html', username=username)
