@@ -32,7 +32,8 @@ mongo.init_app(app)
 @app.route('/')
 @app.route('/get_index')
 def get_index():
-    experiences = mongo.db.experiences.find()
+    # Convert cursor object into python list
+    experiences = list(mongo.db.experiences.find())
     return render_template('index.html', experiences=experiences)
 
 

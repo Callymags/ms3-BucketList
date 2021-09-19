@@ -26,6 +26,10 @@ body {
     padding-bottom: .5rem;
 }
 
+.orange-btn {
+    background-color: #ff6a3d;
+}
+
 /* -----------------NAVBAR----------------- */
 .nav-style {
     background-color: #1a2238;
@@ -159,3 +163,14 @@ form {
     }
     
 }
+
+/* -----------------EXPERIENCES CARD----------------- */
+.bucket-button-style {
+    height: 2.5rem;
+
+}
+.icon-button-style {
+    color: #ff6a3d;
+    font-size: 2rem;
+}
+
