@@ -23,7 +23,7 @@
     <header>
         <nav class="navbar navbar-dark navbar-expand-lg nav-style text-shadow">
             <div class="container-fluid">
-                <a class="navbar-brand" href="{{ url_for('get_index') }}">
+                <a class="navbar-brand" href="{{ url_for('home') }}">
                     <img src="/static/images/ms3-bucket-brand.png" alt="" width="40" height="40"
                         class="d-inline-block align-text-middle">
                     <span class="site-name">Bucket List</span>
@@ -49,7 +49,7 @@
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page"
-                                    href="{{ url_for('get_index') }}">Home</a>
+                                    href="{{ url_for('home') }}">Home</a>
                             </li>
                             {% if session.user %}
                                 <li class="nav-item">
@@ -62,7 +62,7 @@
                                     </a>
                                     <ul class="nav-dropdown-style dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
                                         <li><a class="dropdown-item" href="{{ url_for('user.profile', username=session['user']) }}">Profile</a></li>
-                                        <li><a class="dropdown-item" href="#">Create Experience</a></li>
+                                        <li><a class="dropdown-item" href="{{ url_for('experience.create_exp') }}">Create Experience</a></li>
                                     </ul>
                                 </li>
                                 <li class="nav-item">
