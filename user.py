@@ -95,7 +95,7 @@ def profile(username):
     return render_template('profile.html', username=username, email=email)
 
 @user.route("/update_password/<username>", methods=['GET', 'POST'])
-def update_password(username):  
+def change_password(username):  
     user = mongo.db.users.find_one({"username": username})
 
     if request.method == "GET":
