@@ -92,7 +92,18 @@ def profile(username):
         {'username': session['user']})['username']
     email = mongo.db.users.find_one(
         {'username': session['user']})['email']
-    return render_template('profile.html', username=username, email=email)
+    
+    if session['user']:
+        return render_template('profile.html', username=username, email=email)
+    
+    return redirect(url_for(user.log_in))
+
+@user.route("/log_out")
+def log_out():
+    # Remove user's session cookie
+    flash('You are logged out')
+    session.pop('user')
+    return redirect(url_for('user.log_in'))
 
 @user.route("/update_password/<username>", methods=['GET', 'POST'])
 def change_password(username):  
