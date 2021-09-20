@@ -165,12 +165,28 @@ form {
 }
 
 /* -----------------EXPERIENCES CARD----------------- */
+.experiences-container {
+    overflow-x: hidden;
+}
+
 .bucket-button-style {
     height: 2.5rem;
-
 }
+
 .icon-button-style {
     color: #ff6a3d;
     font-size: 2rem;
+}
+
+.exp-image  {
+    height: 13rem;
+}
+
+.exp-title {
+    height: 4.5rem;
+}
+
+.buttons-bottom {
+    margin-top: auto;
 }
 
