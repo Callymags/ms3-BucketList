@@ -14,4 +14,5 @@ experience = Blueprint(
 
 @experience.route('/create_exp')
 def create_exp():
-    return render_template("create_experience.html")
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    return render_template("create_experience.html", categories=categories)
