@@ -11,23 +11,24 @@
     {% endfor %}
     <div class="experiences-container container-fluid"> 
         <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-12">
-                {% for experience in experiences %}
-                    <div class="card text-center">
-                        <img src=" {{ experience.img_address }}" class="card-img-top" alt="Image of experience">
-                        <div class="card-body">
-                        <h2 class="card-title text-center">{{ experience.experience_name }}</h5>
-                        <p class="">Category: {{ experience.category_name }}</p>
-                        <p class="">Added by: {{ experience.added_by }}</p>
-                        <a href="#" class="btn btn-large">
-                            <img class="bucket-button-style" src="/static/images/ms3-bucket-icon.ico" alt="Orange bucket icon">
-                        </a>
-                        <a href="#" class="btn btn-large orange-btn">Info</a>
-                        <a href="#" class="btn btn-large icon-button-style"><i class="fas fa-check"></i></a>
+            {% for experience in experiences %}
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="card text-center">
+                            <img src=" {{ experience.img_address }}" class="card-img-top" alt="Image of experience">
+                            <div class="card-body">
+                            <h2 class="card-title text-center">{{ experience.experience_name }}</h5>
+                            <p class="">Category: {{ experience.category_name }}</p>
+                            <p class="">Added by: {{ experience.created_by }}</p>
+                            <a href="#" class="btn btn-large">
+                                <img class="bucket-button-style" src="/static/images/ms3-bucket-icon.ico" alt="Orange bucket icon">
+                            </a>
+                            <a href="#" class="btn btn-large orange-btn">Info</a>
+                            <a href="#" class="btn btn-large icon-button-style"><i class="fas fa-check"></i></a>
+                            </div>
                         </div>
-                    </div>
-                {% endfor %}
-            </div>
+                    
+                </div>
+            {% endfor %}
         </div>
     </div>
     
