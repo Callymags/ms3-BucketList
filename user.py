@@ -92,9 +92,10 @@ def profile(username):
         {'username': session['user']})['username']
     email = mongo.db.users.find_one(
         {'username': session['user']})['email']
+    experiences = list(mongo.db.experiences.find({'added_by': session['user']}))
     
     if session['user']:
-        return render_template('profile.html', username=username, email=email)
+        return render_template('profile.html', username=username, email=email, experiences=experiences)
     
     return redirect(url_for(user.log_in))
 
