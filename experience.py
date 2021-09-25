@@ -27,3 +27,9 @@ def create_exp():
         return redirect(url_for("user.profile", username=session['user']))
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("create_experience.html", categories=categories)
+
+@experience.route('/exp_info/<exp_id>')
+def exp_info(exp_id):
+    info = mongo.db.experiences.find_one({'_id': ObjectId(exp_id)})
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    return render_template("experience_info.html", info=info, categories=categories)

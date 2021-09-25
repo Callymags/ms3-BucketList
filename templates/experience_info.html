@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="experiences-info-cont container-fluid">
+        <div class="row">
+                <div class="col-md-6 offset-md-3">
+                        <div class="card experience-card text-center">
+                            <img src=" {{ info.img_address }}" class="card-img-top exp-image" alt="Image of experience">
+                            <div class="card-body">
+                                <h3 class="card-title exp-title text-center">{{ info.experience_name }}</h3>
+                                <p class=""><i class="fas fa-sitemap icon-style"></i> Category: {{ info.category_name }}</p>
+                                <p class=""><i class="fas fa-plus icon-style"></i> Added by: {{ info.added_by }}</p>
+                                <p class=""><i class="fas fa-check icon-style"></i> Completed by: {{ info.added_by }}</p>
+                                <p class=""><i class="fas fa-info-circle icon-style"></i> <strong>Description: </strong>{{ info.description }}</p>
+                                <div class="row buttons-bottom">
+                                    <div class="col">
+                                        <a href="#" class="btn btn-large">
+                                            <img class="bucket-button-style" src="/static/images/ms3-bucket-icon.ico" alt="Orange bucket icon">
+                                        <a href="#" class="btn btn-large icon-button-style"><i class="fas fa-check"></i></a>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    
+                </div>
+        </div>
+    </div>
+{% endblock %}
