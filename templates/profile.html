@@ -23,12 +23,12 @@
                     <div class="container profile-containers">
                         <h3><i class="fas fa-check-circle icon-style"></i></h3>
                         <h3><strong>Experiences Completed:</strong></h3>
-                        <h3><em>{{ username }}</em></h3>
+                        <h3><em>{{ experiences.length }}</em></h3>
                     </div>
                     <div class="container profile-containers">
                         <h3><i class="fas fa-plus-circle icon-style"></i></h3>
                         <h3><strong>Experiences Created</strong></h3>
-                        <h3><em>{{ username }}</em></h3>
+                        <h3><em>{{ experiences|length }}</em></h3>
                     </div>
                     <a class="btn btn-lg edit-btn" href="{{ url_for('user.change_password', username=username) }}" role="button">Edit Profile</a>
                     <button type="submit" class="btn btn-lg delete-btn">Delete Profile</button>
