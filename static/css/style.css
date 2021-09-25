@@ -196,6 +196,12 @@ form {
     } 
 }
 
+.subheading {
+    color: #ff6a3d;
+    text-shadow: 1px 1px #1a2238;
+    padding-top: 2rem;
+}
+
 /* -----------------HOME- EXPERIENCES CARD----------------- */
 .experiences-container {
     overflow-x: hidden;
@@ -203,6 +209,11 @@ form {
 
 .bucket-button-style {
     height: 2.5rem;
+}
+
+.experience-card {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 .icon-button-style {
