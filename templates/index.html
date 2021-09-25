@@ -1,13 +1,25 @@
 {% extends "base.html" %}
 {% block content %}
+    <div class="container-fluid home-image-container">
+        <div class="row">
+            <div class="col-lg-4 col-md-10">
+                <div class="card home-image-card">
+                    <div class="card-body">
+                        <h1 class="text-center home-heading">The perfect place to share your bucket list ideas</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="experiences-container container-fluid"> 
+        <h2 class="text-center">Latest Entries</h2>
         <div class="row">
             {% for experience in experiences %}
-                <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="col-lg-3 col-md-6 col-sm-12">
                         <div class="card experience-card text-center">
                             <img src=" {{ experience.img_address }}" class="card-img-top exp-image" alt="Image of experience">
                             <div class="card-body">
-                                <h2 class="card-title exp-title text-center">{{ experience.experience_name }}</h5>
+                                <h3 class="card-title exp-title text-center">{{ experience.experience_name }}</h3>
                                 <p class="">Category: {{ experience.category_name }}</p>
                                 <p class="">Added by: {{ experience.created_by }}</p>
                                 <div class="row buttons-bottom">

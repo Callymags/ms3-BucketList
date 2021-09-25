@@ -164,7 +164,49 @@ form {
     
 }
 
-/* -----------------EXPERIENCES CARD----------------- */
+/* -----------------HOME----------------- */
+
+.home-image-container {
+    background: url(../images/hero-image.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 80vh;
+
+    overflow-x: hidden;
+}
+
+/* Kevin Powell Youtube tutorial to vertically center heading  */
+/* .home-image-container {
+    position: relative;
+}
+
+.home-heading {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    overflow-x: hidden;
+    color: #f8f8fb;
+} */
+/* end of contribution  */
+
+.home-image-card {
+    background-color:#ff6a3d
+}
+
+@media screen and (max-width: 1024px) {
+    .home-image-container {
+        background: url(../images/hero-image.jpg) no-repeat center right fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        height: 80vh;
+    } 
+}
+
+/* -----------------HOME- EXPERIENCES CARD----------------- */
 .experiences-container {
     overflow-x: hidden;
 }
@@ -184,9 +226,5 @@ form {
 
 .exp-title {
     height: 4.5rem;
-}
-
-.buttons-bottom {
-    margin-top: auto;
 }
 
