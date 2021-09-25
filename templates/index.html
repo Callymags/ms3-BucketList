@@ -2,14 +2,13 @@
 {% block content %}
     <div class="container-fluid home-image-container">
         <div class="row">
-            <div class="col-lg-4 col-md-10">
-                <div class="card home-image-card">
-                    <div class="card-body">
-                        <h1 class="text-center home-heading">The perfect place to share your bucket list ideas</h1>
-                    </div>
+            <div class="col-lg-6 col-md-8 offset-lg-3 offset-md-2">
+                <div class="jumbotron text-center">
+                    <h1 class="header-jumbotron pb-3">The perfect place to find and share bucket list ideas!</h1>
+                    <a type="button" class="btn btn-lg orange-btn"href="{{ url_for('user.register') }}" role="button">Register</a>
                 </div>
             </div>
-        </div>
+    </div>
     </div>
     <div class="experiences-container container-fluid"> 
         <h2 class="text-center">Latest Entries</h2>

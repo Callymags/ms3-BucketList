@@ -167,37 +167,27 @@ form {
 /* -----------------HOME----------------- */
 
 .home-image-container {
-    background: url(../images/hero-image.jpg) no-repeat center center fixed; 
+    background: url(../images/hero-image.jpg) no-repeat right top fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
     height: 80vh;
-
     overflow-x: hidden;
 }
 
-/* Kevin Powell Youtube tutorial to vertically center heading  */
-/* .home-image-container {
-    position: relative;
-}
-
-.home-heading {
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    overflow-x: hidden;
+.jumbotron {
+    background-color: rgba(26, 34, 56, 0.9);
     color: #f8f8fb;
-} */
-/* end of contribution  */
-
-.home-image-card {
-    background-color:#ff6a3d
+    margin-top: 50%;
+    border-radius: 6px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
 @media screen and (max-width: 1024px) {
     .home-image-container {
-        background: url(../images/hero-image.jpg) no-repeat center right fixed; 
+        background: url(../images/hero-image.jpg) no-repeat right top fixed; 
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
