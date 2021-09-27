@@ -33,3 +33,16 @@ def exp_info(exp_id):
     info = mongo.db.experiences.find_one({'_id': ObjectId(exp_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("experience_info.html", info=info, categories=categories)
+
+@experience.route('/save_bucketlist/<exp_id>', methods=['GET','POST'])
+def save_bucketlist(exp_id):
+    if request.method == 'POST': 
+        username = mongo.db.users.find_one({'username': session['user']})
+        bucketlist = username['bucketlist']
+
+        mongo.db.users.update_one(
+            username, 
+            {'$push': {'bucketlist': ObjectId(exp_id)}}
+        )
+        flash('Experience saved to Bucket List')
+        return redirect(url_for('experience_info.html', exp_id=experience_id))
