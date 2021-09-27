@@ -13,11 +13,9 @@
                                 <p class=""><i class="fas fa-info-circle icon-style"></i> <strong>Description: </strong>{{ info.description }}</p>
                                 <div class="row buttons-bottom">
                                     <div class="col">
-                                        <form method="POST" action="{{ url_for('experience.save_bucketlist', exp_id=experience._id) }}">
-                                            <a href="#" class="btn btn-large">
+                                            <a href="{{url_for('experience.save_bucketlist', exp_id=experience._id)}}" class="btn btn-large">
                                                 <img class="bucket-button-style" src="/static/images/ms3-bucket-icon.ico" alt="Orange bucket icon">
                                             </a>
-                                        </form>
                                         <a href="#" class="btn btn-large icon-button-style"><i class="fas fa-check"></i></a>
                                     </div>
                                     

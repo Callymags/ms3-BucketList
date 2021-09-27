@@ -38,11 +38,11 @@ def exp_info(exp_id):
 def save_bucketlist(exp_id):
     if request.method == 'POST': 
         username = mongo.db.users.find_one({'username': session['user']})
-        bucketlist = username['bucketlist']
+        username['bucketlist'].append(ObjectId(exp_id))
 
         mongo.db.users.update_one(
-            username, 
-            {'$push': {'bucketlist': ObjectId(exp_id)}}
+            {'username': session['username']}, 
+            {'$set': {'bucketlist': user['bucketlist']}}
         )
         flash('Experience saved to Bucket List')
-        return redirect(url_for('experience_info.html', exp_id=experience_id))
+        return redirect(url_for('experience_info.html', exp_id=exp_id ))
