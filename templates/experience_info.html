@@ -18,8 +18,10 @@
                                 <img class="bucket-button-style" src="/static/images/ms3-bucket-icon.ico"
                                     alt="Orange bucket icon">
                             </a>
-                            <a href="{{( url_for('experience.edit_exp', exp_id=info._id))}}"
-                                class="btn btn-large orange-btn">Edit</a>
+                            {% if session.user|lower == info.added_by|lower %}
+                                <a href="{{( url_for('experience.edit_exp', exp_id=info._id))}}"
+                                    class="btn btn-large orange-btn">Edit</a>
+                            {% endif %}
                             <a href="#" class="btn btn-large icon-button-style"><i class="fas fa-check"></i></a>
                         </div>
 

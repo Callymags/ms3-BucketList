@@ -20,7 +20,7 @@ def create_exp():
             "category_name": request.form.get("category_name"),
             "img_address": request.form.get("img_address"),
             "description": request.form.get("description"),
-            "created_by": session["user"]
+            "added_by": session["user"]
         }
         mongo.db.experiences.insert_one(experience)
         flash("Experience Successfully Added!")
@@ -37,7 +37,18 @@ def exp_info(exp_id):
 
 @experience.route("/edit_exp/<exp_id>", methods=['GET', 'POST'])
 def edit_exp(exp_id):
-    experience = mongo.db.experiences.find_one({'_id': ObjectId(exp_id)})
+    if request.method == "POST": 
+        edit = {
+            "experience_name": request.form.get("experience_name"), 
+            "category_name": request.form.get("category_name"),
+            "img_address": request.form.get("img_address"),
+            "description": request.form.get("description"),
+            "added_by": session["user"]
+        }
+        mongo.db.experiences.update({'_id': ObjectId(exp_id)}, edit)
+        flash("Experience Successfully Updated!")
+        return redirect(url_for('experience.exp_info', username=session['user'], exp_id=exp_id))
 
+    experience = mongo.db.experiences.find_one({'_id': ObjectId(exp_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("edit_experience.html", experience=experience, categories=categories)
