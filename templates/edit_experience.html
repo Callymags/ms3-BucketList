@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="create-exp-container container-fluid">
+
+        <h1 class="text-center">Edit Experience</h1>
+
+        <div class="row">
+            <div class="col-lg-8 col-md-10 offset-lg-2 offset-md-1">
+                <div class="card">
+                    <div class="card-body">
+                        <form method="POST" action="{{ url_for('experience.edit_exp', exp_id=experience._id) }}">
+                            <!-- Title selection -->
+                            <div class="mb-3 input-group-lg">
+                                <i class="fas fa-heading icon-style"></i>
+                                <label for="experience_name" class="form-label">Title of Experience</label>
+                                <input type="text" name="experience_name" class="form-control" id="experience_name"
+                                    minlength="5" maxlength="30" title="Username must have 5-30 characters" required>
+                            </div>
+                            <!-- Category selection -->
+                            <div class="mb-3 input-group-lg">
+                                <i class="fas fa-sitemap icon-style"></i>
+                                <label for="category_name"> Category: </label>
+                                <select class="form-select mt-2" id="category_name" name="category_name"
+                                    aria-label="Category options for experience" required>
+                                    <option selected></option>
+                                    {% for category in categories %}
+                                    <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <!-- Image url -->
+                            <div class="mb-3 input-group-lg">
+                                <i class="fas fa-image icon-style"></i>
+                                <label for="img_address" class="form-label">Image Address: </label>
+                                <input type="text" name="img_address" class="form-control" id="img_address" required>
+                            </div>
+                            <!-- Decription -->
+                            <div class="mb-3 input-group-lg">
+                                <i class="fas fa-info-circle icon-style"></i>
+                                <label for="description"> Experience Description: </label>
+                                <textarea class="form-control mt-2" name="description" id="description" minlength="5"
+                                    maxlength="200" title="Username must have 5-200 characters"
+                                    aria-label="With textarea"></textarea>
+                            </div>
+                            <!-- Buttons -->
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-lg orange-btn">Edit</button>
+                                <a href="{{ url_for('experience.exp_info', exp_id=experience._id) }}" 
+                                type="button" class="btn btn-lg orange-btn">Cancel</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -28,21 +28,16 @@ def create_exp():
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("create_experience.html", categories=categories)
 
+
 @experience.route('/exp_info/<exp_id>')
 def exp_info(exp_id):
     info = mongo.db.experiences.find_one({'_id': ObjectId(exp_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("experience_info.html", info=info, categories=categories)
 
-@experience.route('/save_bucketlist/<exp_id>', methods=['GET','POST'])
-def save_bucketlist(exp_id):
-    if request.method == 'POST': 
-        username = mongo.db.users.find_one({'username': session['user']})
-        username['bucketlist'].append(ObjectId(exp_id))
+@experience.route("/edit_exp/<exp_id>", methods=['GET', 'POST'])
+def edit_exp(exp_id):
+    experience = mongo.db.experiences.find_one({'_id': ObjectId(exp_id)})
 
-        mongo.db.users.update_one(
-            {'username': session['username']}, 
-            {'$set': {'bucketlist': user['bucketlist']}}
-        )
-        flash('Experience saved to Bucket List')
-        return redirect(url_for('experience_info.html', exp_id=exp_id ))
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    return render_template("edit_experience.html", experience=experience, categories=categories)
