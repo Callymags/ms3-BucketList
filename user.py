@@ -95,18 +95,9 @@ def profile(username):
     email = mongo.db.users.find_one(
         {'username': session['user']})['email']
     experiences = list(mongo.db.experiences.find({'added_by': session['user']}))
-
-    # stores the experiences saved by the user in variable
-    bucketlist = mongo.db.users.find_one({'username': session['user']})['bucketlist']
-
-    bucket_list = []
-
-    for exp_id in bucketlist:
-        exp_id = mongo.db.experiences.find_one({'_id': ObjectId(exp_id)})
-        bucket_list.append(exp_id)
     
     if session['user']:
-        return render_template('profile.html', username=username, email=email, experiences=experiences, bucket_list=bucket_list)
+        return render_template('profile.html', username=username, email=email, experiences=experiences)
     
     return redirect(url_for(user.log_in))
 

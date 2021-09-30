@@ -52,3 +52,10 @@ def edit_exp(exp_id):
     experience = mongo.db.experiences.find_one({'_id': ObjectId(exp_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("edit_experience.html", experience=experience, categories=categories)
+
+
+@experience.route('/delete_exp/<exp_id>')
+def delete_exp(exp_id):
+    mongo.db.experiences.remove({'_id': ObjectId(exp_id)})
+    flash('Experience Successfully Deleted')
+    return redirect(url_for("user.profile", username=session['user']))
