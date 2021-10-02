@@ -23,7 +23,14 @@ def add_category():
             'category_name': request.form.get('category_name')
         }
         mongo.db.categories.insert_one(category)
-        flash('Category Added Successfully')
+        flash('Category Successfully Added')
         return redirect(url_for('categories.get_categories'))
 
     return render_template('add_category.html')
+
+
+@categories.route('/delete_cat/<cat_id>')
+def delete_cat(cat_id):
+    mongo.db.categories.remove({'_id': ObjectId(cat_id)})
+    flash('Category Successfully Deleted')
+    return redirect(url_for('categories.get_categories'))

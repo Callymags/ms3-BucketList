@@ -233,3 +233,8 @@ form {
 .categories-container {
     overflow-x: hidden;
 }
+
+.categories-header {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
