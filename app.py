@@ -11,11 +11,13 @@ from user import user
 # Import experience blueprint from experience file
 from experience import experience
 
+# Import experience blueprint from experience file
+from categories import categories
+
 # Import environment variables only when os can find 
 # existing file path for env.py file
 if os.path.exists('env.py'):
     import env
-
 
 # Create instance of Flask that will be stored in app var
 app = Flask(__name__)
@@ -23,6 +25,7 @@ app = Flask(__name__)
 # Register Blueprints
 app.register_blueprint(user)
 app.register_blueprint(experience)
+app.register_blueprint(categories)
 
 app.config['MONGO_DBNAME'] = os.environ.get('MONGO_DBNAME')
 app.config['MONGO_URI'] = os.environ.get('MONGO_URI')

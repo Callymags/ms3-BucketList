@@ -229,3 +229,7 @@ form {
     height: 4.5rem;
 }
 
+/* ----------------- CATEGORIES ----------------- */
+.categories-container {
+    overflow-x: hidden;
+}

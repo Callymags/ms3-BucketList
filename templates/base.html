@@ -63,7 +63,10 @@
                                     <ul class="nav-dropdown-style dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
                                         <li><a class="dropdown-item" href="{{ url_for('user.profile', username=session['user']) }}">Profile</a></li>
                                         <li><a class="dropdown-item" href="{{ url_for('experience.create_exp') }}">Create Experience</a></li>
-                                    </ul>
+                                        {% if session.user|lower == 'admin'|lower %}
+                                            <li><a class="dropdown-item" href="{{ url_for('categories.get_categories') }}">Manage Categories</a></li>
+                                        {% endif %}
+                                        </ul>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" aria-current="page" href="{{ url_for('user.log_out') }}">Log Out</a>
