@@ -12,5 +12,18 @@ categories = Blueprint(
 
 @categories.route('/get_categories')
 def get_categories():
-    categories= list(mongo.db.categories.find().sort('category_name', 1))
+    categories = list(mongo.db.categories.find().sort('category_name', 1))
     return render_template('categories.html', categories=categories)
+
+
+@categories.route('/add_category', methods=['GET', 'POST'])
+def add_category():
+    if request.method == 'POST': 
+        category = {
+            'category_name': request.form.get('category_name')
+        }
+        mongo.db.categories.insert_one(category)
+        flash('Category Added Successfully')
+        return redirect(url_for('categories.get_categories'))
+
+    return render_template('add_category.html')
