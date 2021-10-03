@@ -17,30 +17,31 @@
                     <div class="row buttons-bottom">
                         <div class="col">
                             <!-- Button trigger modal -->
-                            <button type="button deleteCatButton" class="btn btn-large orange-btn" data-bs-toggle="modal"
-                                data-bs-target="#deleteCatModal">
-                                Delete <i class="far fa-trash-alt"></i></a>
-                        </div>
-                        <!-- Modal -->
-                        <div class="modal fade" id="deleteCatModal" tabindex="-1" aria-labelledby="DeleteCatModalLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="DeleteCatModalLabel">Modal title</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        Are you sure you want to delete {{ category.category_name }} from the
-                                        database?
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">Close</button>
-                                        <a type="button"
-                                            href="{{ url_for('categories.delete_cat', cat_id=category._id) }}"
-                                            class="btn btn-primary">Delete</a>
+                            <button type="button" class="btn btn-large orange-btn" data-bs-toggle="modal"
+                                data-bs-target='#deleteCatModal{{ category._id }}'>
+                                Delete <i class="far fa-trash-alt"></i>
+                            </button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="deleteCatModal{{ category._id }}" tabindex="-1"
+                                aria-labelledby="DeleteCatModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="DeleteCatModalLabel">Modal title</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Are you sure you want to delete <strong>{{ category.category_name }}</strong> from the
+                                            database?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-large btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                            <a type="button"
+                                                href="{{ url_for('categories.delete_cat', cat_id=category._id) }}"
+                                                class="btn orange-btn">Delete <i class="far fa-trash-alt"></i></a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
