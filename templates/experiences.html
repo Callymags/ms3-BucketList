@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
 
-    {% for experience in experiences %}
-        {{ experience.experience_name }}<br>
-        {{ experience.img_address }}<br>
-        {{ experience.category_name }}<br>
-        {{ experience.added_by }}<br>
-        {{ experience.completed_by }}<br>
-        {{ experience.description }}<br>
-    {% endfor %}
-    
+{% for experience in experiences %}
+{{ experience.experience_name }}<br>
+{{ experience.img_address }}<br>
+{{ experience.category_name }}<br>
+{{ experience.added_by }}<br>
+{{ experience.completed_by }}<br>
+{{ experience.description }}<br>
+{% endfor %}
+
 {% endblock %}
