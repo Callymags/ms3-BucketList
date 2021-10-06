@@ -167,17 +167,18 @@ form {
 /* -----------------HOME----------------- */
 
 .home-image-container {
-    background: url(../images/hero-image.jpg) no-repeat right top fixed; 
+    background: linear-gradient(#0000005c, #00000070), url(https://www.conexioconsulting.com/wp-content/uploads/2019/07/hot-air-balloon-festival-cappadocia-turkey.jpg) no-repeat center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
     height: 80vh;
     overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 .jumbotron {
-    background-color: rgba(26, 34, 56, 0.9);
+    /* background-color: rgba(26, 34, 56, 0.9); */
     color: #f8f8fb;
     margin-top: 50%;
     border-radius: 6px;
@@ -185,15 +186,9 @@ form {
     padding-bottom: 1rem;
 }
 
-@media screen and (max-width: 1024px) {
-    .home-image-container {
-        background: url(../images/hero-image.jpg) no-repeat right top fixed; 
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-        height: 80vh;
-    } 
+.header-jumbotron {
+    font-size: 3rem;
+    text-shadow: 2px 2px #1a2238;;
 }
 
 .subheading {
