@@ -212,6 +212,23 @@ form {
     height: 2.5rem;
 }
 
+.exp-button {
+    font-size: 2rem;
+}
+
+/* 
+See README Contribution section for more details
+Contribution Link: https://stackoverflow.com/questions/17642447/change-bootstrap-tooltip-color 
+*/
+.tooltip-inner {
+    background-color: #1a2238;
+    color: #f8f8fb;
+}
+
+.tooltip.top .tooltip-arrow {
+    border-top: 5px solid #1a2238;
+  }  
+
 .experience-card {
     margin-top: 2rem;
     margin-bottom: 2rem;
