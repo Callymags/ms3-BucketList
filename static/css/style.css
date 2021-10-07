@@ -203,7 +203,7 @@ form {
     padding-top: 2rem;
 }
 
-/* -----------------HOME- EXPERIENCES CARD----------------- */
+/* ----------------- EXPERIENCES CARD ----------------- */
 .experiences-container {
     overflow-x: hidden;
 }
@@ -229,6 +229,10 @@ Contribution Link: https://stackoverflow.com/questions/17642447/change-bootstrap
     border-top: 5px solid #1a2238;
   }  
 
+/*
+End of contribution
+*/
+
 .experience-card {
     margin-top: 2rem;
     margin-bottom: 2rem;
@@ -249,6 +253,27 @@ Contribution Link: https://stackoverflow.com/questions/17642447/change-bootstrap
 }
 
 
+/* ----------------- EXPERIENCE INFO ----------------- */
+.exp-dropup {
+    display: inline;
+}
+
+.dropup > button {
+    color: #ff6a3d;
+    font-size: 1.5rem;
+}
+
+.dropdown > button:hover {
+    color: #1a2238;
+}
+
+.dropup > .dropdown-menu {
+    background-color: #ff6a3d;
+}
+
+.dropup > .dropdown-menu > li > a:hover{
+    color: #1a2238;
+}
 
 /* ----------------- CATEGORIES ----------------- */
 .categories-container {
