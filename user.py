@@ -97,8 +97,7 @@ def profile(username):
 
     if session['user']:
         return render_template('profile.html', username=username, email=email,
-         experiences=experiences, bucket_list=bucket_list)
-    
+            experiences=experiences)
     return redirect(url_for(user.log_in))
 
 @user.route("/log_out")
