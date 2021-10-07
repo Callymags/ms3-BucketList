@@ -94,7 +94,6 @@ def profile(username):
     email = mongo.db.users.find_one(
         {'username': session['user']})['email']
     experiences = list(mongo.db.experiences.find({'added_by': session['user']}))
-    bucket_list = list(mongo.db.experiences.find({'bucket_list': session['user']}))
 
     if session['user']:
         return render_template('profile.html', username=username, email=email,

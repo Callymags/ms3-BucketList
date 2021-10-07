@@ -69,6 +69,4 @@ def add_bucket_list(exp_id):
             {'$push': {'bucket_list': ObjectId(exp_id)}}
         )
     flash('Experience Added To Bucket List')
-    return redirect(url_for("user.profile", username=session['user'], exp_id=bucket_list))
-
-
+    return redirect(url_for("user.profile", username=session['user']))
