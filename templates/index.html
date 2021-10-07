@@ -22,7 +22,7 @@
                                 <p class="">Added by: {{ experience.added_by }}</p>
                                 <div class="row buttons-bottom">
                                     <div class="col">
-                                        <a href="#" type="button" class="btn btn-large" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to Bucket List">
+                                        <a href="{{ url_for('experience.add_bucket_list', exp_id=bucket_list._id) }}" type="button" class="btn btn-large" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to Bucket List">
                                             <img class="bucket-button-style" src="/static/images/ms3-bucket-icon.ico" alt="Orange bucket icon">
                                         </a>
                                         <a class="btn btn-large exp-button" href="{{ url_for('experience.exp_info', exp_id=experience._id) }}" 

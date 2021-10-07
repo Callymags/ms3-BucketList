@@ -59,3 +59,16 @@ def delete_exp(exp_id):
     mongo.db.experiences.remove({'_id': ObjectId(exp_id)})
     flash('Experience Successfully Deleted')
     return redirect(url_for("user.profile", username=session['user']))
+
+
+@experience.route('/bucket_list/<exp_id>', methods=['POST'])
+def add_bucket_list(exp_id):
+    username = mongo.db.users.find_one({"username": session["user"]})
+    mongo.db.users.update_one(
+            username,
+            {'$push': {'bucket_list': ObjectId(exp_id)}}
+        )
+    flash('Experience Added To Bucket List')
+    return redirect(url_for("user.profile", username=session['user'], exp_id=bucket_list))
+
+

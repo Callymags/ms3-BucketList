@@ -45,8 +45,7 @@ def register():
             'email': request.form.get("email").lower(),
             # Use werkzeug security helpers
             'password': generate_password_hash(request.form.get('password')), 
-            'bucket_list': [],
-            'done_it_list': []
+            'bucket_list': []
         }
         # Call users collection on MongoDB
         mongo.db.users.insert_one(register)
@@ -95,9 +94,11 @@ def profile(username):
     email = mongo.db.users.find_one(
         {'username': session['user']})['email']
     experiences = list(mongo.db.experiences.find({'added_by': session['user']}))
-    
+    bucket_list = list(mongo.db.experiences.find({'bucket_list': session['user']}))
+
     if session['user']:
-        return render_template('profile.html', username=username, email=email, experiences=experiences)
+        return render_template('profile.html', username=username, email=email,
+         experiences=experiences, bucket_list=bucket_list)
     
     return redirect(url_for(user.log_in))
 
