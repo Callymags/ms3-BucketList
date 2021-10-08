@@ -61,5 +61,8 @@ def delete_exp(exp_id):
     return redirect(url_for("user.profile", username=session['user']))
 
 
-@experience.route('/bucket_list/<exp_id>', methods=['POST'])
-def add_bucket_list(exp_id):
+@experience.route('/search', methods=['GET', 'POST'])
+def search():
+    query = request.form.get('query')
+    experiences = mongo.db.experiences.find({'$text': {'$search': query}})
+    return render_template('search.html', experiences=experiences)
