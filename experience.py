@@ -63,8 +63,8 @@ def delete_exp(exp_id):
 
 @experience.route('/search', methods=['GET', 'POST'])
 def search():
-    query = request.form.get("query")
-    experiences = list(mongo.db.experiences.find({"$text": {"$search": query}}))
-    print(query)
-    print(experiences)
+    query = request.form.get("query", '')
+    experiences = ''
+    if request.method == 'POST':
+        experiences = list(mongo.db.experiences.find({"$text": {"$search": query}}))
     return render_template('search.html', experiences=experiences)
