@@ -39,7 +39,8 @@ mongo.init_app(app)
 @app.route('/home')
 def home():
     # Convert cursor object into python list
-    experiences = list(mongo.db.experiences.find())
+    # Sort experiences by latest experiences added to db
+    experiences = list(mongo.db.experiences.find().sort("_id", -1))
     return render_template('index.html', experiences=experiences)
 
 
