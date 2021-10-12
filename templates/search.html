@@ -23,6 +23,16 @@
                             <button type="submit" class="btn btn-lg orange-btn">Reset</button>
                         </div>
                     </form>
+                    <div class="row">
+                        <div class="col-6">
+                            <a type="button" class="btn navy-btn dropdown-toggle filter-btn" id="filter" 
+                            data-bs-toggle="dropdown" aria-expanded="false">Sort</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="{{ url_for('experience.filter', filter_type='_id', order='descending') }}">Date Uploaded: Latest</a>
+                                <a class="dropdown-item" href="{{ url_for('experience.filter', filter_type='_id', order='ascending') }}">Date Uploaded: Oldest</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -69,7 +79,6 @@
 </div>
 <div class="container experiences-container"> 
     {% if request.method == 'GET' %}
-    <h1 class="text-center subheading"><strong>Latest Entries</strong></h1>
     <div class="row">
         {% for experience in experiences %}
             <div class="col-lg-3 col-md-6 col-sm-12">

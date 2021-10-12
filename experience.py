@@ -63,12 +63,23 @@ def delete_exp(exp_id):
 
 @experience.route('/search', methods=['GET', 'POST'])
 def search():
-    experiences = list(mongo.db.experiences.find().sort("_id", -1))
-    categories = list(mongo.db.categories.find().sort("category_name", 1))
+    experiences = list(mongo.db.experiences.find().sort("_id", 1))
     query = request.form.get("query", '')
     results = ''
     if request.method == 'POST':
         results = list(mongo.db.experiences.find({"$text": {"$search": query}}))
     return render_template(
-        'search.html', results=results, experiences=experiences, categories=categories)
+        'search.html', results=results, experiences=experiences)
 
+
+@experience.route('/filter/<filter_type>/<order>')
+def filter(filter_type, order):
+    """
+    Filter all experiences to show either latest or oldest uploads.
+    """
+
+    if order == 'ascending':
+        experiences = list(mongo.db.experiences.find().sort(filter_type, 1))
+    else:
+        experiences = list(mongo.db.experiences.find().sort(filter_type, -1))
+    return render_template('search.html', experiences=experiences)

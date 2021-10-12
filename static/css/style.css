@@ -284,3 +284,22 @@ End of contribution
     margin-top: 2rem;
     margin-bottom: 2rem;
 }
+
+/* ----------------- EXPERIENCES ----------------- */
+.navy-btn {
+    background-color: #1a2238;
+    color: #f8f8fb;
+}
+
+.navy-btn:hover {
+    background-color: #2a385c;
+    color: #e6e6eb;
+}
+
+.dropdown-menu .dropdown-item {
+    color: #f8f8fb;
+}
+
+.dropdown-item:hover {
+    background-color: #2a385c;
+}

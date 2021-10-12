@@ -34,3 +34,14 @@ def delete_cat(cat_id):
     mongo.db.categories.remove({'_id': ObjectId(cat_id)})
     flash('Category Successfully Deleted')
     return redirect(url_for('categories.get_categories'))
+
+
+@categories.route('/filter/<filter_cat>/')
+def filter(filter_cat):
+    """
+    Filter all experiences to show those related to a certain category.
+    """
+
+    experiences = list(mongo.db.experiences.find().sort(filter_cat))
+    return render_template('search.html', experiences=experiences)
+    
