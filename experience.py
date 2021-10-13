@@ -1,10 +1,13 @@
 # Import dependencies
 from flask import (
     Blueprint, flash, render_template, redirect, session, request, url_for)
+from flask_paginate import Pagination, get_page_args
 from bson.objectid import ObjectId
 
 # Import database instance of PyMongo
 from database import mongo
+
+
 
 
 # Create Blueprint to be imported to app.py
@@ -61,16 +64,38 @@ def delete_exp(exp_id):
     return redirect(url_for("user.profile", username=session['user']))
 
 
+def get_exp_paginate(offset=0, per_page=8):
+    """
+    Sets the parameters for the pagination
+    on the experiences page
+    """
+    experiences = list(mongo.db.experiences.find())
+    return experiences[offset: offset + per_page]
+
+
+@experience.route('/get_exp')
+def get_exp():
+    experiences = list(mongo.db.experiences.find().sort("_id", 1))
+    
+    page, per_page, offset = get_page_args(
+        page_parameter='page', per_page_parameter='per_page')
+    per_page = 8
+    total = len(experiences)
+    pagination_exp = get_exp_paginate(
+        offset=page*per_page-per_page, per_page=per_page)
+    pagination = Pagination(page=page, per_page=per_page, total=total)
+    return render_template(
+        'search.html', experiences=pagination_exp,
+        page=page, per_page=per_page, pagination=pagination)
+
 @experience.route('/search', methods=['GET', 'POST'])
 def search():
     experiences = list(mongo.db.experiences.find().sort("_id", 1))
-    query = request.form.get("query", '')
-    results = ''
-    if request.method == 'POST':
+    query = request.form.get("query", "")
+    results = ""
+    if request.method == "POST": 
         results = list(mongo.db.experiences.find({"$text": {"$search": query}}))
-    return render_template(
-        'search.html', results=results, experiences=experiences)
-
+    return render_template('search.html', experiences=experiences, results=results)
 
 @experience.route('/filter/<filter_type>/<order>')
 def filter(filter_type, order):
