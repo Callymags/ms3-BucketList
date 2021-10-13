@@ -303,3 +303,33 @@ End of contribution
 .dropdown-item:hover {
     background-color: #2a385c;
 }
+
+.pagination-page-info {
+    padding: .6em;
+    padding-left: 0;
+    width: 40em;
+    margin: .5em;
+    margin-left: 0;
+    font-size: 12px;
+}
+
+.pagination-page-info-b {
+    padding-left: 2px;
+    padding: .1em .25em;
+    font-size: 150%;
+}
+
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: #ff6a3d;
+    border-color: #ff6a3d;
+}
+
+.page-link {
+    color: #ff6a3d;
+}
+
+.page-link:hover {
+    color: #ff6a3d;
+}
