@@ -94,11 +94,14 @@ def profile(username):
     email = mongo.db.users.find_one(
         {'username': session['user']})['email']
     experiences = list(mongo.db.experiences.find({'added_by': session['user']}))
+    bucket_list = mongo.db.users.find_one(
+        {'username': session['user']})['bucket_list']
 
     if session['user']:
         return render_template('profile.html', username=username, email=email,
-            experiences=experiences)
-    return redirect(url_for(user.log_in))
+            experiences=experiences, bucket_list=bucket_list)
+    else:
+        return redirect(url_for('user.log_in'))
 
 @user.route("/log_out")
 def log_out():

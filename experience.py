@@ -193,3 +193,14 @@ def categories(category):
         per_page=per_page,
         pagination=pagination,
         )
+
+
+# Add to watchlist/favourites and Remove from watchlist/favourites
+@experience.route("/add_bucket_list/<exp_id>")
+def add_bucket_list(exp_id):
+    user = mongo.db.users.find_one({"username": session["user"]})
+    user["bucket_list"].append(ObjectId(exp_id))
+    mongo.db.users.update_one({"username": session["user"]},
+                     {"$set": {"bucket_list": user["bucket_list"]}})
+    flash('Experience Added to Bucket List')
+    return redirect(url_for('search.html', exp_id=exp_id))
