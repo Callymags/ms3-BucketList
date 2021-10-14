@@ -81,7 +81,7 @@ def get_exp():
     per_page = 8
     total = len(experiences)
     pagination_exp = get_exp_paginate(
-        offset=page*per_page-per_page, per_page=per_page)
+        jls_extract_var=page*per_page-per_page, per_page=per_page)
     pagination = Pagination(page=page, per_page=per_page, total=total,
                     css_framework='bootstrap4')
     return render_template(
@@ -105,6 +105,32 @@ def filter(filter_type, order):
 
     if order == 'ascending':
         experiences = list(mongo.db.experiences.find().sort(filter_type, 1))
+
+        # pagination adapted from mozillazg (credited in README)
+        page, per_page, offset = get_page_args(
+            page_parameter='page', per_page_parameter='per_page')
+        per_page = 8
+        total = len(experiences)
+        pagination_exp = get_exp_paginate(
+            offset=page*per_page-per_page, per_page=per_page)
+        pagination = Pagination(page=page, per_page=per_page, total=total,
+                        css_framework='bootstrap4')
+        return render_template(
+            'search.html', experiences=pagination_exp,
+            page=page, per_page=per_page, pagination=pagination)
+
     else:
         experiences = list(mongo.db.experiences.find().sort(filter_type, -1))
-    return render_template('search.html', experiences=experiences)
+    # pagination adapted from mozillazg (credited in README)
+        page, per_page, offset = get_page_args(
+            page_parameter='page', per_page_parameter='per_page')
+        per_page = 8
+        total = len(experiences)
+        pagination_exp = get_exp_paginate(
+            offset=page*per_page-per_page, per_page=per_page)
+        pagination = Pagination(page=page, per_page=per_page, total=total,
+                        css_framework='bootstrap4')
+        return render_template(
+            'search.html', experiences=pagination_exp,
+            page=page, per_page=per_page, pagination=pagination)
+        
