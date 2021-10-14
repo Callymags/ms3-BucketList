@@ -34,13 +34,15 @@ app.secret_key = os.environ.get('SECRET_KEY')
 # Initiate PyMongo instance
 mongo.init_app(app)
 
-
 @app.route('/')
 @app.route('/home')
 def home():
-    # Convert cursor object into python list
-    # Sort experiences by latest experiences added to db
-    experiences = list(mongo.db.experiences.find().sort("_id", -1))
+    """
+    Convert cursor object into python list
+    Sort experiences by latest experiences added to db
+    Limit query to last 8 results in db
+    """
+    experiences = list(mongo.db.experiences.find().sort("_id", -1).limit(8))
     return render_template('index.html', experiences=experiences)
 
 
