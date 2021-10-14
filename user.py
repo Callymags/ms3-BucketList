@@ -130,3 +130,10 @@ def change_password(username):
     else:
         flash("Passwords Do Not Match")
         return redirect(url_for("user.update_password", username=session['user']))
+
+@user.route("/delete_profile")
+def delete_profile():
+    mongo.db.users.delete_one({'username': session['user']})
+    session.pop('user')
+    flash('Profile Successfully Deleted')
+    return redirect(url_for("home"))

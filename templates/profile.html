@@ -26,11 +26,32 @@
                         <h3><em>{{ experiences|length }}</em></h3>
                     </div>
                     <a class="btn btn-lg edit-btn" href="{{ url_for('user.change_password', username=username) }}" role="button">Edit Profile</a>
-                    <button type="submit" class="btn btn-lg delete-btn">Delete Profile</button>
+                    <a type="button" class="btn btn-large orange-btn" data-bs-toggle="modal"
+                      data-bs-target='#deleteUserModal'><i class="far fa-trash-alt"></i> Delete Profile</a>
                 </div>
             </div>
         </div>
     </div>
+</div>
+<!-- MODAL -->
+<div class="modal fade" id="deleteUserModal" tabindex="-1" aria-labelledby="deleteUserModalLabel"
+aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="deleteUserModalLabel">Delete</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+      <p>Are you sure you want to delete your profile?</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-large orange-btn" data-bs-dismiss="modal">Close</button>
+      <a type="button" href="{{ url_for('user.delete_profile') }}"
+        class="btn btn-large orange-btn">Delete</a>
+    </div>
+  </div>
+</div>
 </div>
 <div class="bucket-list-container container"> 
     <h1 class="text-center subheading"><strong>Bucket List</strong></h1>
