@@ -13,6 +13,25 @@ experience = Blueprint(
     'experience', __name__, static_folder='static', template_folder='templates'
     )
 
+def get_exp_paginate(offset=0, per_page=8):
+    """
+    Sets the parameters for the pagination
+    on the experiences page
+    """
+    # pagination adapted from mozillazg (credited in README)
+    experiences = list(mongo.db.experiences.find())
+    return experiences[offset: offset + per_page]
+
+def get_exp_paginate_desc(offset=0, per_page=8):
+    """
+    Sets the parameters for the pagination in reverse order
+    on the experiences page
+    """
+    # pagination adapted from mozillazg (credited in README)
+    experiences = list(mongo.db.experiences.find().sort("_id", -1))
+    return experiences[offset: offset + per_page]
+
+
 @experience.route('/create_exp', methods=["GET", "POST"])
 def create_exp():
     if request.method == "POST": 
@@ -62,19 +81,10 @@ def delete_exp(exp_id):
     return redirect(url_for("user.profile", username=session['user']))
 
 
-def get_exp_paginate(offset=0, per_page=8):
-    """
-    Sets the parameters for the pagination
-    on the experiences page
-    """
-    # pagination adapted from mozillazg (credited in README)
-    experiences = list(mongo.db.experiences.find())
-    return experiences[offset: offset + per_page]
-
 
 @experience.route('/get_exp')
 def get_exp():
-    experiences = list(mongo.db.experiences.find().sort("_id", -1))
+    experiences = list(mongo.db.experiences.find().sort("_id", 1))
     # pagination adapted from mozillazg (credited in README)
     page, per_page, offset = get_page_args(
         page_parameter='page', per_page_parameter='per_page')
@@ -104,7 +114,7 @@ def filter(filter_type, order):
     """
 
     if order == 'ascending':
-        experiences = list(mongo.db.experiences.find().sort(filter_type, 1))
+        experiences = list(mongo.db.experiences.find().sort(filter_type))
 
         # pagination adapted from mozillazg (credited in README)
         page, per_page, offset = get_page_args(
@@ -119,14 +129,14 @@ def filter(filter_type, order):
             'search.html', experiences=pagination_exp,
             page=page, per_page=per_page, pagination=pagination)
 
-    elif order == 'descending':
-        experiences = list(mongo.db.experiences.find().sort(filter_type, -1))
+    else:
+        experiences = list(mongo.db.experiences.find().sort(filter_type))
     # pagination adapted from mozillazg (credited in README)
         page, per_page, offset = get_page_args(
             page_parameter='page', per_page_parameter='per_page')
         per_page = 8
         total = len(experiences)
-        pagination_exp = get_exp_paginate(
+        pagination_exp = get_exp_paginate_desc(
             offset=page*per_page-per_page, per_page=per_page)
         pagination = Pagination(page=page, per_page=per_page, total=total,
                         css_framework='bootstrap4')
