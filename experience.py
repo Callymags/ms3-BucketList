@@ -31,6 +31,19 @@ def get_exp_paginate_desc(offset=0, per_page=8):
     experiences = list(mongo.db.experiences.find().sort("_id", -1))
     return experiences[offset: offset + per_page]
 
+def filter_exp_cat_paginate(category, offset=0, per_page=8):
+    """
+    Sets the parameters for the pagination
+    when filtering the experiences by categories
+    """
+    if category == "Activity":
+        experiences = list(mongo.db.experiences.find({"category_name": "Activity"}))
+    elif category == "Event":
+        experiences = list(mongo.db.experiences.find({"category_name": "Event"}))
+    else:
+        experiences = list(mongo.db.experiences.find({"category_name": "Travel"}))
+    return experiences[offset: offset + per_page]
+
 
 @experience.route('/create_exp', methods=["GET", "POST"])
 def create_exp():
@@ -105,7 +118,8 @@ def search():
     results = ""
     if request.method == "POST": 
         results = list(mongo.db.experiences.find({"$text": {"$search": query}}))
-    return render_template('search.html', experiences=experiences, results=results)
+        return render_template(
+            'search.html', results=results, experiences=experiences)
 
 @experience.route('/filter/<filter_type>/<order>')
 def filter(filter_type, order):
@@ -115,8 +129,6 @@ def filter(filter_type, order):
 
     if order == 'ascending':
         experiences = list(mongo.db.experiences.find().sort(filter_type))
-
-        # pagination adapted from mozillazg (credited in README)
         page, per_page, offset = get_page_args(
             page_parameter='page', per_page_parameter='per_page')
         per_page = 8
@@ -131,7 +143,6 @@ def filter(filter_type, order):
 
     else:
         experiences = list(mongo.db.experiences.find().sort(filter_type))
-    # pagination adapted from mozillazg (credited in README)
         page, per_page, offset = get_page_args(
             page_parameter='page', per_page_parameter='per_page')
         per_page = 8
@@ -144,3 +155,41 @@ def filter(filter_type, order):
             'search.html', experiences=pagination_exp,
             page=page, per_page=per_page, pagination=pagination)
         
+
+@experience.route('/filter/<category>')
+def categories(category):
+    """
+    Filters the experiences by their categories
+    and renders them to the search.html template
+    """
+
+    # returns a list of all experiences in Activity category
+    if category == 'Activity':
+        experiences = list(
+            mongo.db.experiences.find({"category_name": "Activity"}))
+
+    # returns a list of all experiences in Event category
+    elif category == "Event":
+        experiences = list(
+            mongo.db.experiences.find({"category_name": "Event"}))
+
+    # returns a list of all experiences in Travel category
+    else:
+        experiences = list(
+            mongo.db.experiences.find({"category_name": "Travel"}))
+
+    page, per_page, offset = get_page_args(
+        page_parameter='page', per_page_parameter='per_page')
+    per_page = 8
+    total = len(experiences)
+    pagination_exp = filter_exp_cat_paginate(
+        category, offset=page*per_page-per_page, per_page=per_page)
+    pagination = Pagination(page=page, per_page=per_page, total=total, 
+        css_framework='bootstrap4')
+    return render_template(
+        "search.html",
+        experiences=pagination_exp,
+        page=page,
+        per_page=per_page,
+        pagination=pagination,
+        )
