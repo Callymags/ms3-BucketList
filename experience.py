@@ -194,11 +194,20 @@ def categories(category):
         pagination=pagination,
         )
 
-
-# Add to bucket list
 @experience.route("/add_bucket_list/<exp_id>")
 def add_bucket_list(exp_id):
+    """
+    Filters the experience by object Id and pushes 
+    the experience id to user's bucket_list array in DB
+    """
     user = mongo.db.users.find_one({"username": session["user"]})
+    saved = user['bucket_list']
+    # checks if the experience is already in the user's
+    # bucket_list array
+    if ObjectId(exp_id) in saved:
+        flash("Experience Already Saved to Bucket List")
+        return redirect(request.referrer)
+
     user["bucket_list"].append(ObjectId(exp_id))
     mongo.db.users.update_one({"username": session["user"]},
                      {"$set": {"bucket_list": user["bucket_list"]}})

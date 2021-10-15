@@ -100,7 +100,9 @@ def profile(username):
     # creates an empty array
     bucket_lists = []
 
-    # Each of the users saved recipes is appended to the empty array
+    # Each of the users saved experiences is appended to the empty array.
+    # The bucket_lists array allows us to get the experience info needed to generate 
+    # cards for Bucket List section of profile 
     for exp_id in saved_exp:
         exp_id = mongo.db.experiences.find_one({"_id": ObjectId(exp_id)})
         bucket_lists.append(exp_id)
