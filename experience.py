@@ -203,4 +203,4 @@ def add_bucket_list(exp_id):
     mongo.db.users.update_one({"username": session["user"]},
                      {"$set": {"bucket_list": user["bucket_list"]}})
     flash('Experience Added to Bucket List')
-    return redirect(url_for('experience.search', exp_id=exp_id))
+    return redirect(request.referrer)
