@@ -86,7 +86,7 @@ def log_in():
     
     return render_template('login.html')
 
-@user.route("/profile/<username>", methods=['GET', 'POST'])
+@user.route("/profile/<username>/", methods=['GET', 'POST'])
 def profile(username):
     # Grab the session user's username from db
     username = mongo.db.users.find_one(
@@ -94,12 +94,20 @@ def profile(username):
     email = mongo.db.users.find_one(
         {'username': session['user']})['email']
     experiences = list(mongo.db.experiences.find({'added_by': session['user']}))
-    bucket_list = mongo.db.users.find_one(
+    saved_exp = mongo.db.users.find_one(
         {'username': session['user']})['bucket_list']
+
+    # creates an empty array
+    bucket_lists = []
+
+    # Each of the users saved recipes is appended to the empty array
+    for exp_id in saved_exp:
+        exp_id = mongo.db.experiences.find_one({"_id": ObjectId(exp_id)})
+        bucket_lists.append(exp_id)
 
     if session['user']:
         return render_template('profile.html', username=username, email=email,
-            experiences=experiences, bucket_list=bucket_list)
+          experiences=experiences, bucket_lists=bucket_lists)
     else:
         return redirect(url_for('user.log_in'))
 

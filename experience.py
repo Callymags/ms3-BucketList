@@ -119,7 +119,7 @@ def search():
     if request.method == "POST": 
         results = list(mongo.db.experiences.find({"$text": {"$search": query}}))
         return render_template(
-            'search.html', results=results, experiences=experiences)
+            'search.html', results=results, experiences=experiences, exp_id=exp_id)
 
 @experience.route('/filter/<filter_type>/<order>')
 def filter(filter_type, order):
@@ -195,7 +195,7 @@ def categories(category):
         )
 
 
-# Add to watchlist/favourites and Remove from watchlist/favourites
+# Add to bucket list
 @experience.route("/add_bucket_list/<exp_id>")
 def add_bucket_list(exp_id):
     user = mongo.db.users.find_one({"username": session["user"]})
@@ -203,4 +203,4 @@ def add_bucket_list(exp_id):
     mongo.db.users.update_one({"username": session["user"]},
                      {"$set": {"bucket_list": user["bucket_list"]}})
     flash('Experience Added to Bucket List')
-    return redirect(url_for('search.html', exp_id=exp_id))
+    return redirect(url_for('experience.search', exp_id=exp_id))
