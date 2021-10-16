@@ -205,8 +205,7 @@ def add_bucket_list(exp_id):
     # bucket_list array
     if ObjectId(exp_id) in saved:
         flash("Experience Already Saved to Bucket List")
-        print("Referrer", request.referrer)
-        return redirect(request.referrer)
+        return redirect(url_for("user.profile", username=session['user']))
 
     user["bucket_list"].append(ObjectId(exp_id))
     mongo.db.users.update_one({"username": session["user"]},
