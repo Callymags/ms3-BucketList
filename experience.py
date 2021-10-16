@@ -212,3 +212,19 @@ def add_bucket_list(exp_id):
                      {"$set": {"bucket_list": user["bucket_list"]}})
     flash('Experience Added to Bucket List')
     return redirect(request.referrer)
+
+
+@experience.route("/remove_bucket_list/<exp_id>", methods=["POST"])
+def remove_bucket_list(exp_id):
+    """
+    Filters the experience by object Id and removes it  
+    from the user's bucket_list array
+    """
+    user = mongo.db.users.find_one({"username": session["user"]})
+
+    # Remove recipe
+    user['bucket_list'].remove(ObjectId(exp_id))
+    mongo.db.users.update_one({'username': session['user']}, 
+                    {'$set': {'bucket_list': user['bucket_list']}})
+    flash('Experience Removed from Bucket List')
+    return redirect(request.referrer)

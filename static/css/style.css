@@ -247,6 +247,11 @@ End of contribution
     font-size: 2rem;
 }
 
+.icon-button-style:hover {
+    color: #1a2238;
+    font-size: 2rem;
+}
+
 .exp-image  {
     height: 13rem;
     object-fit: cover;
