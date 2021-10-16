@@ -222,7 +222,7 @@ def remove_bucket_list(exp_id):
     """
     user = mongo.db.users.find_one({"username": session["user"]})
 
-    # Remove recipe
+    # Remove experience
     user['bucket_list'].remove(ObjectId(exp_id))
     mongo.db.users.update_one({'username': session['user']}, 
                     {'$set': {'bucket_list': user['bucket_list']}})
