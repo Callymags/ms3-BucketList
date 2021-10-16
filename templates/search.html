@@ -1,129 +1,84 @@
 {% extends "base.html" %}
 {% block content %}
-
-<div class="search-container container">
-    <div class="row">
-        <div class="col-lg-8 col-md-10 offset-lg-2 offset-md-1">
-            <div class="card">
-                <h1 class="text-center">Experiences</h1>
-                <div class="card-body">
-                    <form method="POST" action="{{ url_for('experience.search') }}">
-                        <!-- Search input -->
-                        <div class="mb-3 input-group-lg">
-                            <i class="fas fa-search icon-style"></i>
-                            <label for="query" class="form-label">Search Experiences</label>
-                            <input type="text" placeholder="" name="query" class="form-control" id="query" minlength="5"
-                                maxlength="30" title="Must have 5-30 characters" required>
-                        </div>
-                        <!-- Buttons -->
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-lg orange-btn">Search</button>
-                            <a type="button" href="{{ url_for('experience.get_exp') }}"
-                                class="btn btn-lg orange-btn">Reset</a>
-                        </div>
-                    </form>
-                    <div class="row">
-                        <div class="col-6">
-                            <a type="button" class="btn navy-btn dropdown-toggle filter-btn" id="filter"
-                                data-bs-toggle="dropdown" aria-expanded="false">Sort</a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item"
-                                    href="{{ url_for('experience.filter', filter_type='_id', order='descending') }}">Date
-                                    Uploaded: Latest</a>
-                                <a class="dropdown-item"
-                                    href="{{ url_for('experience.filter', filter_type='_id', order='ascending') }}">Date
-                                    Uploaded: Oldest</a>
-                                <a class="dropdown-item"
-                                    href="{{ url_for('experience.categories', category='Activity') }}">Category: Activity</a>
-                                <a class="dropdown-item"
-                                    href="{{ url_for('experience.categories', category='Event') }}">Category: Event</a>
-                                <a class="dropdown-item"
-                                    href="{{ url_for('experience.categories', category='Travel') }}">Category: Travel</a>
-                            </div>
+<div class="container">
+<div class="row">
+    {% for result in results %}
+    <div class="col-lg-8 col-md-10 offset-lg-2 offset-md-1">
+        <div class="card">
+            <h1 class="text-center">Experiences</h1>
+            <div class="card-body">
+                <form method="POST" action="{{ url_for('experience.search') }}">
+                    <!-- Search input -->
+                    <div class="mb-3 input-group-lg">
+                        <i class="fas fa-search icon-style"></i>
+                        <label for="query" class="form-label">Search Experiences</label>
+                        <input type="text" placeholder="" name="query" class="form-control" id="query" minlength="5"
+                            maxlength="30" title="Must have 5-30 characters" required>
+                    </div>
+                    <!-- Buttons -->
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-lg orange-btn">Search</button>
+                        <a type="button" href="{{ url_for('experience.get_exp') }}"
+                            class="btn btn-lg orange-btn">Reset</a>
+                    </div>
+                </form>
+                <div class="row">
+                    <div class="col-6">
+                        <a type="button" class="btn navy-btn dropdown-toggle filter-btn" id="filter"
+                            data-bs-toggle="dropdown" aria-expanded="false">Sort</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item"
+                                href="{{ url_for('experience.filter', filter_type='_id', order='descending') }}">Date
+                                Uploaded: Latest</a>
+                            <a class="dropdown-item"
+                                href="{{ url_for('experience.filter', filter_type='_id', order='ascending') }}">Date
+                                Uploaded: Oldest</a>
+                            <a class="dropdown-item"
+                                href="{{ url_for('experience.categories', category='Activity') }}">Category: Activity</a>
+                            <a class="dropdown-item"
+                                href="{{ url_for('experience.categories', category='Event') }}">Category: Event</a>
+                            <a class="dropdown-item"
+                                href="{{ url_for('experience.categories', category='Travel') }}">Category: Travel</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<div class="container results-container">
-    <div class="container experiences-container">
-        {% if request.method == 'GET' %}
-        <div class="row">
-            {% for experience in experiences %}
-            <div class="col-lg-3 col-md-6 col-sm-12">
-                <div class="card experience-card text-center">
-                    <img src=" {{ experience.img_address }}" class="card-img-top exp-image" alt="Image of experience">
-                    <div class="card-body">
-                        <h3 class="card-title exp-title text-center">{{ experience.experience_name }}</h3>
-                        <span class="badge navy-btn">{{ experience.category_name }}</span>
-                        <p class="">Added by: {{ experience.added_by }}</p>
-                        <div class="row buttons-bottom">
-                            <div class="col">
-                                <form class='bucket-form' action="{{ url_for('experience.add_bucket_list', exp_id=experience._id) }}">
-                                    <button type="submit" class="btn btn-large" data-bs-toggle="tooltip" title="Add to Bucket List" data-bs-placement="top">
-                                        <img class="bucket-button-style" src="/static/images/ms3-bucket-icon.ico"
-                                        alt="Orange bucket icon">
-                                    </button>
-                                </form>
-                                <a class="btn btn-large exp-button"
-                                    href="{{ url_for('experience.exp_info', exp_id=experience._id) }}"
-                                    data-bs-toggle="tooltip" data-bs-placement="top" title="See Information">
-                                    <i class="fas fa-info-circle icon-style"></i>
-                                </a>
-                            </div>
-    
-                        </div>
-                    </div>
-                </div>
-    
-            </div>
-            {% endfor %}
-        </div>
-        <div class="row justify-content-center">
-            {{ pagination.links }}
-        </div>
-        {% endif %}
-    </div>
-    {% if request.method=='POST' %}
     {% if results|length > 0 %}
     <h1 class="text-center">Results</h1>
-    <div class="row">
-        {% for result in results %}
-        <div class="col-lg-3 col-md-6 col-sm-12">
-            <div class="card experience-card text-center">
-                <img src=" {{ result.img_address }}" class="card-img-top exp-image" alt="Image of experience">
-                <div class="card-body">
-                    <h3 class="card-title exp-title text-center">{{ result.experience_name }}</h3>
-                    <span class="badge navy-btn">{{ result.category_name }}</span>
-                    <p class="">Added by: {{ result.added_by }}</p>
-                    <div class="row buttons-bottom">
-                        <div class="col">
-                            <a href="" type="button" class="btn btn-large" data-bs-toggle="tooltip"
-                                data-bs-placement="top" title="Add to Bucket List">
+    <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="card experience-card text-center">
+            <img src=" {{ result.img_address }}" class="card-img-top exp-image" alt="Image of experience">
+            <div class="card-body">
+                <h3 class="card-title exp-title text-center">{{ result.experience_name }}</h3>
+                <span class="badge navy-btn">{{ result.category_name }}</span>
+                <p class="">Added by: {{ result.added_by }}</p>
+                <div class="row buttons-bottom">
+                    <div class="col">
+                        <form method="POST" class='bucket-list-form' action="{{ url_for('experience.add_bucket_list', exp_id=result._id) }}">
+                            <button type="submit" class="btn btn-large" data-bs-toggle="tooltip" title="Add to Bucket List" data-bs-placement="top">
                                 <img class="bucket-button-style" src="/static/images/ms3-bucket-icon.ico"
-                                    alt="Orange bucket icon">
-                            </a>
-                            <a class="btn btn-large exp-button"
-                                href="{{ url_for('experience.exp_info', exp_id=result._id) }}" data-bs-toggle="tooltip"
-                                data-bs-placement="top" title="See Information">
-                                <i class="fas fa-info-circle icon-style"></i>
-                            </a>
-                        </div>
-
+                                alt="Orange bucket icon">
+                            </button>
+                        </form>
+                        <a class="btn btn-large exp-button"
+                            href="{{ url_for('experience.exp_info', exp_id=result._id) }}" data-bs-toggle="tooltip"
+                            data-bs-placement="top" title="See Information">
+                            <i class="fas fa-info-circle icon-style"></i>
+                        </a>
                     </div>
+
                 </div>
             </div>
-
         </div>
-        {% endfor %}
+
     </div>
     {% else %}
     <h2 class="text-center subheading"><strong>Oops! No Results Found</strong></h2>
     {% endif %}
-    {% endif %}
+    {% endfor %}
 </div>
-
-
+</div>  
+</div>
 {% endblock %}

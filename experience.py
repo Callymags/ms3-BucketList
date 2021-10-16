@@ -108,18 +108,17 @@ def get_exp():
     pagination = Pagination(page=page, per_page=per_page, total=total,
                     css_framework='bootstrap4')
     return render_template(
-        'search.html', experiences=pagination_exp,
+        'experiences.html', experiences=pagination_exp,
         page=page, per_page=per_page, pagination=pagination)
 
 @experience.route('/search', methods=['GET', 'POST'])
 def search():
-    experiences = list(mongo.db.experiences.find().sort("_id", 1))
     query = request.form.get("query", "")
     results = ""
-    if request.method == "POST": 
+    if request.method == "POST":
         results = list(mongo.db.experiences.find({"$text": {"$search": query}}))
-        return render_template(
-            'search.html', results=results, experiences=experiences, exp_id=exp_id)
+    return render_template(
+        'search.html', results=results)
 
 @experience.route('/filter/<filter_type>/<order>')
 def filter(filter_type, order):
@@ -138,7 +137,7 @@ def filter(filter_type, order):
         pagination = Pagination(page=page, per_page=per_page, total=total,
                         css_framework='bootstrap4')
         return render_template(
-            'search.html', experiences=pagination_exp,
+            'experiences.html', experiences=pagination_exp,
             page=page, per_page=per_page, pagination=pagination)
 
     else:
@@ -152,7 +151,7 @@ def filter(filter_type, order):
         pagination = Pagination(page=page, per_page=per_page, total=total,
                         css_framework='bootstrap4')
         return render_template(
-            'search.html', experiences=pagination_exp,
+            'experiences.html', experiences=pagination_exp,
             page=page, per_page=per_page, pagination=pagination)
         
 
@@ -187,14 +186,14 @@ def categories(category):
     pagination = Pagination(page=page, per_page=per_page, total=total, 
         css_framework='bootstrap4')
     return render_template(
-        "search.html",
+        "experiences.html",
         experiences=pagination_exp,
         page=page,
         per_page=per_page,
         pagination=pagination,
         )
 
-@experience.route("/add_bucket_list/<exp_id>")
+@experience.route("/add_bucket_list/<exp_id>", methods=["GET", "POST"])
 def add_bucket_list(exp_id):
     """
     Filters the experience by object Id and pushes 
@@ -202,12 +201,17 @@ def add_bucket_list(exp_id):
     """
     user = mongo.db.users.find_one({"username": session["user"]})
     saved = user['bucket_list']
+    print("Referrer", request.referrer)
+    print("Saved", saved)
     # checks if the experience is already in the user's
     # bucket_list array
+    print(ObjectId(exp_id))
     if ObjectId(exp_id) in saved:
+        print("Case 1")
         flash("Experience Already Saved to Bucket List")
         return redirect(request.referrer)
 
+    print("Case 2")
     user["bucket_list"].append(ObjectId(exp_id))
     mongo.db.users.update_one({"username": session["user"]},
                      {"$set": {"bucket_list": user["bucket_list"]}})

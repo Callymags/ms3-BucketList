@@ -256,6 +256,10 @@ End of contribution
     height: 4.5rem;
 }
 
+.bucket-list-form {
+    display: inline;
+}
+
 
 /* ----------------- EXPERIENCE INFO ----------------- */
 .exp-dropup {
