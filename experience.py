@@ -201,17 +201,13 @@ def add_bucket_list(exp_id):
     """
     user = mongo.db.users.find_one({"username": session["user"]})
     saved = user['bucket_list']
-    print("Referrer", request.referrer)
-    print("Saved", saved)
     # checks if the experience is already in the user's
     # bucket_list array
-    print(ObjectId(exp_id))
     if ObjectId(exp_id) in saved:
-        print("Case 1")
         flash("Experience Already Saved to Bucket List")
+        print("Referrer", request.referrer)
         return redirect(request.referrer)
 
-    print("Case 2")
     user["bucket_list"].append(ObjectId(exp_id))
     mongo.db.users.update_one({"username": session["user"]},
                      {"$set": {"bucket_list": user["bucket_list"]}})
