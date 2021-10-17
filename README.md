@@ -81,4 +81,23 @@ As a developer, I want to:
 1. Develop a deeper understanding of Python, MongoDB, and Flask by creating an original project with CRUD functionality.
 2. Create a professional looking project that I will be proud to put in my portfolio.
 
+### Wireframes 
+I used Balsamiq wireframes to visualise how the site would be structured on different devices. 
+
+These wireframes were a useful reference when I began developing the basic structure for the website.
+
+You can view the wireframes below.
+
+* [Landing Page](static/images/wireframes/landing-page.jpg)
+* [Edit Experience](static/images/wireframes/edit-experience.jpg)
+* [Edit Profile]( static/images/wireframes/edit-profile.jpg)
+* [Experiences Info](static/images/wireframes/experience-info.jpg)
+* [Home Page](static/images/wireframes/home-page.jpg)
+* [Landing Page](static/images/wireframes/landing-page.jpg)
+* [Profile](static/images/wireframes/profile.jpg)
+* [Search Page](static/images/wireframes/search-page.jpg)
+
+It is important to note that I did not do a wireframe for certain pages like the admin page, the log-in page, and the register page. The reason for this was a lack of adequate planning since the project deadline was due within 5 weeks of me starting the project. This meant that I rushed the initial planning of the project more than I should have and came across certain design problems as a result. 
+
+Also, as you can see from the wireframes, there have been some changes to certain features when I began developing the pages. 
 
