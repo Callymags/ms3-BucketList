@@ -346,3 +346,25 @@ End of contribution
 .page-link:hover {
     color: #ff6a3d;
 }
+
+/* ----------------- ERROR PAGE ----------------- */
+.error-background {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2a385c;
+}
+
+.error-img {
+    margin-bottom: 16px;
+}
+
+.error-site-name {
+    font-size: 3rem;
+    color: #f8f8fb;
+    display: inline;
+}
+
+.error-name {
+    color: #f8f8fb;
+}

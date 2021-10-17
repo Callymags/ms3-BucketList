@@ -14,12 +14,14 @@
             </strong>{{ info.description }}</p>
           <div class="row buttons-bottom">
             <div class="col">
+              {% if session.user %}
               <form class='bucket-list-form' action="{{ url_for('experience.add_bucket_list', exp_id=info._id) }}">
                 <button type="submit" class="btn btn-large" data-bs-toggle="tooltip" title="Add to Bucket List" data-bs-placement="top">
                     <img class="bucket-button-style" src="/static/images/ms3-bucket-icon.ico"
                     alt="Orange bucket icon">
                 </button>
-            </form>
+              </form>
+              {% endif %}
               {% if session.user|lower == info.added_by|lower %}
               <div class="dropup exp-dropup">
                 <button class="btn" type="button" id="dropdownMenu" data-bs-toggle="dropdown" aria-expanded="false">
