@@ -12,7 +12,7 @@ h1 {
 
 body {
     font-family: 'Work Sans', sans-serif;
-
+    color: #101112;
     min-height: 100vh;
 
     display: flex;

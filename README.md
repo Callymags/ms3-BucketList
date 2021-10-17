@@ -90,7 +90,7 @@ You can view the wireframes below.
 
 * [Landing Page](static/images/wireframes/landing-page.jpg)
 * [Edit Experience](static/images/wireframes/edit-experience.jpg)
-* [Edit Profile]( static/images/wireframes/edit-profile.jpg)
+* [Edit Profile](static/images/wireframes/edit-profile.jpg)
 * [Experiences Info](static/images/wireframes/experience-info.jpg)
 * [Home Page](static/images/wireframes/home-page.jpg)
 * [Landing Page](static/images/wireframes/landing-page.jpg)
@@ -100,4 +100,21 @@ You can view the wireframes below.
 It is important to note that I did not do a wireframe for certain pages like the admin page, the log-in page, and the register page. The reason for this was a lack of adequate planning since the project deadline was due within 5 weeks of me starting the project. This meant that I rushed the initial planning of the project more than I should have and came across certain design problems as a result. 
 
 Also, as you can see from the wireframes, there have been some changes to certain features when I began developing the pages. 
+
+## Features 
+### General Design Choices
+#### Colour Palette
+The three main colours I chose for the website are displayed in hex format below
+
+* Orange #ff6a3d: Used for the website brand, the font awesome icons, and the buttons on the website
+* Navy #1a2238: Used for the navbar, the footer, and the badges that display the experience categories on the experience cards. 
+* White #f8f8fb: Used for the font colour for buttons and nav-links on the site. I also used it for the social links in the footer. 
+* Black #101112: Used for the majority of the font colours on the site. 
+
+#### Fonts
+I used two different fonts for this website
+
+*['Crimson Text', serif:]( https://fonts.google.com/?query=crimson+text) Used for the website headings
+*['Work Sans', sans-serif:]( https://fonts.google.com/?query=work+sans) Used for all other font elements of the website. 
+
 
