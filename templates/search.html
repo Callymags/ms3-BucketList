@@ -67,14 +67,13 @@
                             action="{{ url_for('experience.add_bucket_list', exp_id=result._id) }}">
                             <button type="submit" class="btn btn-large" data-bs-toggle="tooltip"
                                 title="Add to Bucket List" data-bs-placement="top">
-                                <img class="bucket-button-style" src="/static/images/ms3-bucket-icon.ico"
-                                    alt="Orange bucket icon">
+                                <i class="fas fa-plus-circle icon-button-style"></i>
                             </button>
                         </form>
                         <a class="btn btn-large exp-button"
                             href="{{ url_for('experience.exp_info', exp_id=result._id) }}" data-bs-toggle="tooltip"
                             data-bs-placement="top" title="See Information">
-                            <i class="fas fa-info-circle icon-style"></i>
+                            <i class="fas fa-info-circle icon-button-style"></i>
                         </a>
                     </div>
 

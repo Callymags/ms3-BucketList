@@ -34,6 +34,10 @@ body {
     background-color: #ff6a3d;
 }
 
+.orange-btn:hover {
+    background-color: #f34d1b;
+}
+
 .navy-btn {
     background-color: #1a2238;
     font-size: 0.9rem;
@@ -67,6 +71,13 @@ body {
     color: white;
 }
 
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #ff6a3d;
+}
+
+.dropdown-menu .dropdown-item:hover {
+    color: #ff6a3d;
+}
 /* -----------------FOOTER----------------- */
 .footer-style {
     background-color: #1a2238;
@@ -79,6 +90,11 @@ body {
 
 .social-links {
     font-size: 1.5rem;
+    color: #f8f8fb;
+}
+
+.social-links:hover {
+    color: #ff6a3d;
 }
 
 /* -----------------FORMS----------------- */
@@ -91,9 +107,6 @@ body {
 form {
     font-size: 1.3rem;
 }
-.register-btn {
-    background-color: #ff6a3d;
-}
 
 .icon-style {
     color: #ff6a3d;
@@ -103,13 +116,14 @@ form {
 /* -----------------REGISTER----------------- */
 
 .register-container {
-    background: url(../images/hero-image.jpg) no-repeat center center fixed; 
+    background: linear-gradient(#0000005c, #00000070), url(https://www.conexioconsulting.com/wp-content/uploads/2019/07/hot-air-balloon-festival-cappadocia-turkey.jpg) no-repeat center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
-
 @media screen and (min-height: 700px) {
     .register-container {
         height: 85vh;
@@ -124,14 +138,30 @@ form {
     
 }
 
-/* -----------------LOG IN----------------- */
+.register-card {
+    background-color: rgba(255, 255, 255, 0.85);
+}
 
+.redirect-link {
+    color: #ff6a3d;
+}
+
+.redirect-link:hover {
+    color: #1a2238;
+}
+/* -----------------LOG IN----------------- */
 .login-container {
-    background: url(../images/login-image.jpg) no-repeat center center fixed; 
+    background: linear-gradient(#0000005c, #00000070), url(https://www.conexioconsulting.com/wp-content/uploads/2019/07/hot-air-balloon-festival-cappadocia-turkey.jpg) no-repeat center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.login-card {
+    background-color: rgba(255, 255, 255, 0.85);
 }
 
 @media screen and (min-height: 700px) {
@@ -154,25 +184,17 @@ form {
     margin-bottom: 1rem;
 }
 
-.edit-btn {
-    background-color: #ff6a3d;
-}
-
-.delete-btn {
-    background-color: #ff6a3d;
-}
 
 @media screen and (max-width: 370px) {
-    .edit-btn {
-        background-color: #ff6a3d;
+    .orange-btn {
         margin-bottom: .5rem;
     }
     .delete-btn {
-        background-color: #ff6a3d;
         margin-top: .5rem;
     }
     
 }
+
 
 /* -----------------HOME----------------- */
 
@@ -300,6 +322,7 @@ End of contribution
 
 /* ----------------- EXPERIENCES ----------------- */
 .navy-btn {
+    margin-top: 2rem;
     background-color: #1a2238;
     color: #f8f8fb;
 }

@@ -7,7 +7,7 @@
 
     <div class="row">
         <div class="col-lg-8 col-md-10 offset-lg-2 offset-md-1">
-            <div class="card">
+            <div class="card register-card">
                 <div class="card-body">
                     <h1 class="text-center">Register</h1>
                     <form method="POST" action="{{ url_for('user.register') }}">
@@ -35,10 +35,10 @@
                         </div>
                         <div class="mb-3">
                             <p>Already have an account?
-                                <span><a href="{{ url_for('user.log_in') }}">Log In</a></span>
+                                <span><a class="redirect-link" href="{{ url_for('user.log_in') }}">Log In</a></span>
                             </p>
                         </div>
-                        <button type="submit" class="btn btn-lg register-btn">Register</button>
+                        <button type="submit" class="btn btn-lg orange-btn">Register</button>
                     </form>
                 </div>
             </div>

@@ -131,12 +131,9 @@ def change_password(username):
     if request.method == 'POST':
         new_password = generate_password_hash(request.form.get('updated-password'))
 
-        if check_password_hash(
-            user['password'], request.form.get('existing-password')
-        ):
-            mongo.db.users.update_one(
-                {'username': username},
-                {'$set': {'password': new_password}}
+        mongo.db.users.update_one(
+            {'username': username},
+            {'$set': {'password': new_password}}
             )
         flash("Password Updated Successfully")
         return redirect(url_for("user.profile", username=session['user']))
