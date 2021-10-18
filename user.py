@@ -2,11 +2,12 @@ from flask import (
     Blueprint, flash, render_template, redirect, request, session, url_for
 )
 from werkzeug.security import generate_password_hash, check_password_hash
-# Need to render object Id in order to find documents from Mongo DB
+
 from bson.objectid import ObjectId
 
-# Import database instance of PyMongo
 from database import mongo
+
+from utils import is_logged_in
 
 # Create Blueprint to be imported to app.py
 user = Blueprint(
@@ -16,6 +17,9 @@ user = Blueprint(
 
 @user.route("/register", methods=['GET', 'POST'])
 def register():
+    """
+    Posts new user data to the database
+    """
     # Check if requested method is equal to Post
     if request.method == "POST":
         # Check if username already exists within db
@@ -61,6 +65,9 @@ def register():
 
 @user.route("/log_in", methods=['GET', 'POST'])
 def log_in():
+    """
+    Performs log in validation for user when inputting their log in details
+    """
     if request.method == 'POST': 
         # Check if username exists in db
         existing_user = mongo.db.users.find_one(
@@ -88,62 +95,85 @@ def log_in():
 
 @user.route("/profile/<username>/", methods=['GET', 'POST'])
 def profile(username):
-    # Grab the session user's username from db
-    username = mongo.db.users.find_one(
-        {'username': session['user']})['username']
-    email = mongo.db.users.find_one(
-        {'username': session['user']})['email']
-    experiences = list(mongo.db.experiences.find({'added_by': session['user']}))
-    saved_exp = mongo.db.users.find_one(
-        {'username': session['user']})['bucket_list']
+    """
+    Generates the user's profile. Queries the mongo database to find the user's username, 
+    email, bucket_list and the experiences the user has created
+    """
+    # Only queries db if user is logged in
+    if is_logged_in():
+        username = mongo.db.users.find_one(
+            {'username': session['user']})['username']
+        email = mongo.db.users.find_one(
+            {'username': session['user']})['email']
+        experiences = list(mongo.db.experiences.find({'added_by': session['user']}))
+        saved_exp = mongo.db.users.find_one(
+            {'username': session['user']})['bucket_list']
 
-    # creates an empty array
-    bucket_lists = []
+        # creates an empty array
+        bucket_lists = []
 
-    # Each of the users saved experiences is appended to the empty array.
-    # The bucket_lists array allows us to get the experience info needed to generate 
-    # cards for Bucket List section of profile 
-    for exp_id in saved_exp:
-        exp_id = mongo.db.experiences.find_one({"_id": ObjectId(exp_id)})
-        bucket_lists.append(exp_id)
-
-    if session['user']:
+        # Each of the users saved experiences is appended to the empty array.
+        # The bucket_lists array allows us to get the experience info needed to generate
+        # cards for Bucket List section of profile
+        for exp_id in saved_exp:
+            exp_id = mongo.db.experiences.find_one({"_id": ObjectId(exp_id)})
+            bucket_lists.append(exp_id)
         return render_template('profile.html', username=username, email=email,
-          experiences=experiences, bucket_lists=bucket_lists)
+                               experiences=experiences, bucket_lists=bucket_lists)
+    # Redirects user to log in screen if they are not logged in                          
     else:
         return redirect(url_for('user.log_in'))
 
 @user.route("/log_out")
 def log_out():
-    # Remove user's session cookie
-    flash('You are logged out')
-    session.pop('user')
-    return redirect(url_for('user.log_in'))
+    """
+    Removes user's session cookie and redirects them to log in page
+    """
+    if is_logged_in():
+        # Remove user's session cookie
+        flash('You are logged out')
+        session.pop('user')
+        return redirect(url_for('user.log_in'))
 
 @user.route("/update_password/<username>", methods=['GET', 'POST'])
-def change_password(username):  
-    user = mongo.db.users.find_one({"username": username})
+def change_password(username):
+    """
+    User can change password by inserting new password into input field.
+    This new password will be updated in the database 
+    """
+    # Only performs action if user is logged in
+    if is_logged_in():
+        # Supports form data being posted to the database. 
+        if request.method == 'POST':
+            new_password = generate_password_hash(request.form.get('updated-password'))
 
-    if request.method == "GET":
-        return render_template(
-            "update_password.html", username=username)
-
-    if request.method == 'POST':
-        new_password = generate_password_hash(request.form.get('updated-password'))
-
-        mongo.db.users.update_one(
-            {'username': username},
-            {'$set': {'password': new_password}}
-            )
-        flash("Password Updated Successfully")
-        return redirect(url_for("user.profile", username=session['user']))
-    else:
-        flash("Passwords Do Not Match")
-        return redirect(url_for("user.update_password", username=session['user']))
+            mongo.db.users.update_one(
+                {'username': username},
+                {'$set': {'password': new_password}}
+                )
+            flash("Password Updated Successfully")
+            return redirect(url_for("user.profile", username=session['user']))
+        else:
+            # Supports GET request to get change password page
+            return render_template(
+                "update_password.html", username=username)
+    # Redirect user to log in screen if not logged in. 
+    else: 
+        flash('You need to log in to perform that operation')
+        return redirect(url_for('user.log_in'))
 
 @user.route("/delete_profile")
 def delete_profile():
-    mongo.db.users.delete_one({'username': session['user']})
-    session.pop('user')
-    flash('Profile Successfully Deleted')
-    return redirect(url_for("home"))
+    """
+    User can delete their profile information from database. 
+    """
+    # Only performs action if user is logged in
+    if is_logged_in():
+        mongo.db.users.delete_one({'username': session['user']})
+        session.pop('user')
+        flash('Profile Successfully Deleted')
+        return redirect(url_for("home"))
+    # Redirects user to log in screen if they are not logged in
+    else:
+        flash('You need to log in to perform that operation')
+        return redirect(url_for('user.log_in'))
