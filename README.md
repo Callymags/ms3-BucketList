@@ -10,6 +10,7 @@
   * [User Stories](#user-stories)
   * [Wireframes](#wireframes)
 * [Features](#features)
+  * [General Design Choices](#general-design-choices)
   * [Landing Page Features](#landing-page-features)
   * [Game Page Features](#game-page-features)
   * [Future Features](#future-features)
@@ -114,7 +115,7 @@ The three main colours I chose for the website are displayed in hex format below
 #### Fonts
 I used two different fonts for this website
 
-*['Crimson Text', serif:]( https://fonts.google.com/?query=crimson+text) Used for the website headings
-*['Work Sans', sans-serif:]( https://fonts.google.com/?query=work+sans) Used for all other font elements of the website. 
+* ['Crimson Text', serif:]( https://fonts.google.com/?query=crimson+text) Used for the website headings
+* ['Work Sans', sans-serif:]( https://fonts.google.com/?query=work+sans) Used for all other font elements of the website. 
 
 
