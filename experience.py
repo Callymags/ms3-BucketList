@@ -89,9 +89,16 @@ def edit_exp(exp_id):
 
 @experience.route('/delete_exp/<exp_id>')
 def delete_exp(exp_id):
+    bucket_lists = list(mongo.db.users.find({'bucket_list': ObjectId(exp_id)}))
+    created_by = mongo.db.experiences['created_by']
+    for bucket_list in bucket_lists: 
+        mongo.db.users.update_many(
+            bucket_list, {'$pull': {'bucket_list': ObjectId(exp_id)}} 
+            )
     mongo.db.experiences.remove({'_id': ObjectId(exp_id)})
     flash('Experience Successfully Deleted')
     return redirect(url_for("user.profile", username=session['user']))
+    
 
 
 

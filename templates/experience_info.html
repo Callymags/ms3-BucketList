@@ -9,7 +9,6 @@
           <h2 class="card-title exp-title text-center">{{ info.experience_name }}</h2>
           <span class="badge navy-btn">{{ info.category_name }}</span>
           <p class=""><i class="fas fa-plus icon-style"></i> Added by: {{ info.added_by }}</p>
-          <p class=""><i class="fas fa-check icon-style"></i> Completed by: {{ info.added_by }}</p>
           <p class=""><i class="fas fa-info-circle icon-style"></i> <strong>Description:
             </strong>{{ info.description }}</p>
           <div class="row buttons-bottom">
@@ -21,7 +20,7 @@
                 </button>
               </form>
               {% endif %}
-              {% if session.user|lower == info.added_by|lower %}
+              {% if session.user|lower == info.added_by|lower or session.user|lower == 'admin'|lower %}
               <div class="dropup exp-dropup">
                 <button class="btn" type="button" id="dropdownMenu" data-bs-toggle="dropdown" aria-expanded="false">
                   <i class="fas fa-bars"></i>
