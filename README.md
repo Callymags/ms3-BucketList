@@ -236,6 +236,41 @@ I used two different fonts for this website
 * [Google fonts:](https://fonts.google.com/) Used to find appropriate fonts for the website
 * [Font Awesome:](https://fontawesome.com/icons?d=gallery&p=2) Provided the icons for the website buttons and the social media links in the footer. 
 
+## Testing
+### User Stories
+#### Regular User
+As a regular user, I want: 
+1. A visually appealing site no matter what device I use.
+* Bootstrap styling makes the landing page responsive and appealing at all screen sizes. 
+2. The ability to easily navigate through the site the first time I visit.
+* Conventional structure of the site ensures that the user will intuitively know how to navigate through the page.
+3. The site’s purpose to be clear once I see the landing page so I can decide if I want to register or not
+* The landing page does give a general sense of what the website is about. However, it does need more information on the user features and the benefits of becoming a user.  
+4. The ability to log in and out of the site once I am registered
+* Users can log in/out with ease
+5. The ability to search for bucket list ideas on the site by experience name, or by experience category. 
+* Users can search for an experience by its title, or they can sort all experience by date uploaded and category.
+6. The ability to view more information on a certain experience if I am interested in it. 
+* Information button on experience card will direct user to page with more information on experience
+7. The ability to create experiences that are not already on the site, so I can share them with the community. 
+* A logged in user can create an experience by selecting the Create Experience link in the navbar. 
+8. The ability to edit an experience if I have made an error when creating it. 
+* A user can edit an experience if they were the ones that created it. 
+9. The ability to delete an experience I have created.
+* User can delete experience if they were the person who created it. 
+10. The ability to add an experience to my own customised bucket list that I can view on my profile. 
+* Bucket list section on profile that is customised for each individual user. 
+
+#### Software Developer/Recruiter
+As a software developer/recruiter, I want: 
+1. To view the developer’s Linked In profile
+* Link to my LinkedIn profile in the website footer
+2. To view the developer’s GitHub repository for the project so I can look into their code
+* Link to the project’s GitHub repository in the footer of the website 
+3. The ability to examine the creator’s ReadMe for more details on how the project was created.
+* ReadMe features a detailed description of the project’s purpose, how the project was made, the projects testing, and the project’s deployment details
+4. View the site and play around with its features. 
+* Live site deployed to Heroku. Link at the top of ReadMe. 
 
 ### Database CRUD Operations Testing:
 #### Read Operations:
@@ -246,7 +281,6 @@ I used two different fonts for this website
 * Experience Card: If clicked on, the experience card redirects to a page that gives more information on that specific experience. 
 * Profile: User profile cards gives the user details on their username and email that are saved to the database. 
 * Admin: A card is loaded for every category in the database. This can be seen in the Manage Categories section that can only be seen by the admin.  
-
 
 #### Create Operations:
 * Sign Up: When a user signs up, a new user is created in the user collection with details on their username, email, password. An empty array is also created for the user’s Bucket List so they can add experiences to this array
@@ -262,7 +296,6 @@ I used two different fonts for this website
 * Experiences: When the user/admin deletes an experience, it is removed from the database and their Bucket List.
 * Delete Profile: A user can delete their profile from the database by selecting the Delete Profile button in their profile. 
 * Remove from Bucket List: A user can remove an experience from their Bucket List, and this will delete the experience from the Bucket List array in the database. 
-
 
 ### User Validation:
 #### Login Validation:
