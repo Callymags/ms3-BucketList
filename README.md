@@ -30,7 +30,8 @@
   * [Libraries](#libraries)
 * [Testing](#testing)
   * [User Stories](#user-stories-testing)
-  * [Feature Functionality](#feature-functionality)
+  * [Database CRUD Operations](#database-crud-operations-testing)
+  * [User Validation](#user-validation)
   * [Responsive Design Testing](#responsive-design-testing)
   * [Browser Compatibility](#browser-compatibility)
   * [Site Performance](#site-performance)
@@ -234,4 +235,42 @@ I used two different fonts for this website
 ### Libraries
 * [Google fonts:](https://fonts.google.com/) Used to find appropriate fonts for the website
 * [Font Awesome:](https://fontawesome.com/icons?d=gallery&p=2) Provided the icons for the website buttons and the social media links in the footer. 
+
+
+### Database CRUD Operations Testing:
+#### Read Operations:
+* Landing Page and Home Page: The last eight experiences entries into the database are shown to the user
+* Experiences Page: A card is loaded for every movie in the database on the experiences page.
+* Experiences Page: Results are sorted into specific groups based on the Sort filter.  
+* Search Page: Experiences are pulled from the database if they match the search options for the experience title.
+* Experience Card: If clicked on, the experience card redirects to a page that gives more information on that specific experience. 
+* Profile: User profile cards gives the user details on their username and email that are saved to the database. 
+* Admin: A card is loaded for every category in the database. This can be seen in the Manage Categories section that can only be seen by the admin.  
+
+
+#### Create Operations:
+* Sign Up: When a user signs up, a new user is created in the user collection with details on their username, email, password. An empty array is also created for the user’s Bucket List so they can add experiences to this array
+* Create Experience: When a user adds a new experience, it enters the experience collection with relevant fields. The experience’s ID is also added to the user's Created Experiences list.
+* Add Category: The site admin can add more categories to the categories collection in the database by selecting the add category option through the site. This new category can then be selected by other users when they are creating experiences. 
+
+#### Update Operations:
+* Experiences: A user can edit an experience they have created by filling out an edit experience form. This experience will then be updated in the database.
+* Admin: The site admin can edit all experiences on the website. These changes will the be updated in the database. 
+* Edit Profile: Any user can change their password by updating inputting a new password into the new password input field on the Edit Profile page. This old password will then be updated in the database.  
+
+#### Delete Operations:
+* Experiences: When the user/admin deletes an experience, it is removed from the database and their Bucket List.
+* Delete Profile: A user can delete their profile from the database by selecting the Delete Profile button in their profile. 
+* Remove from Bucket List: A user can remove an experience from their Bucket List, and this will delete the experience from the Bucket List array in the database. 
+
+
+### User Validation:
+#### Login Validation:
+* Users can't login with an incorrect password. 
+* Users can't login with the incorrect username.
+
+#### Sign Up Validation:
+* Users can't create an account with a username that is already in the database. 
+* Users can't create an account with an email that is already in the database. 
+
 
