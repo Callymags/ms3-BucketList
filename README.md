@@ -228,6 +228,7 @@ I used two different fonts for this website
 * [Windows Paint 3D:](https://www.microsoft.com/en-us/p/paint-3d/9nblggh5fv99?activetab=pivot:overviewtab) Used to create a transparent PNG of the Bucket List logo created on Canva
 * [Color Hunt:](https://colorhunt.co/) Used to find suitable background colours for styling.   
 *	[Online-Convert.com:](https://www.online-convert.com/) Used to convert the bucket logo to favicon format to be used in the experience cards. 
+* [Heroku:](https://www.heroku.com/) Used to deploy the live version of the site.
 
 
 ### Libraries
