@@ -13,7 +13,7 @@
   * [Colour Palette](#colour-palette)
   * [Fonts](#fonts)
   * [Base Template Features](#base-template-features)
-  * [Home/Landing Page Features](#home/landing-page-features)
+  * [Home and Landing Page Features](#home-and-landing-page-features)
   * [Register Features](#register-features)
   * [Log In Features](#log-in-features)
   * [Profile Features](#profile-features)
@@ -132,7 +132,7 @@ I used two different fonts for this website
 * Navbar: The navbar displays the website logo and all the navbar links. The user can only see certain navbar links depending on if they are logged in/out, or if they are admin/regular user. This was done through the use of flask conditional statements. 
 * Footer: The footer shows the GitHub and LinkedIn social links which will open a new tab for the user to view my LinkedIn profile and my GitHub repository for this project. 
  
-### Home/Landing Page Features
+### Home and Landing Page Features
 * Hero Image: The landing page has a hero image with a short heading within to keep the user on the site. This image covers the whole width of the page and has custom CSS styling to darken it. This allows the heading in the middle of the image to stand out more
 * Latest Entries Section: This section displays the 8 most recent uploads made to the site by users. First time users can then view more information on these experiences but need to sign up/log in to add these experiences to their bucket list. 
 * Experience cards: The Experience cards show an image, title, and category of an experience. The cards show the name of the user who added the experience to the site and there is a button at the end of the card to view more information on the experience. This will redirect the user to another page. 
@@ -167,7 +167,7 @@ I used two different fonts for this website
 * No Items in Experiences Created Section: The user will see a link in the Experiences Created section if they have not yet created any experiences on the. The link will redirect them to the Create Experience page. 
 * Experience Card tooltips: The experience cards have two buttons at the bottom that will allow the user to add/remove experience from their Bucket List, or to see more information about the experience. The buttons are displayed as icons but if the user hovers over the image, there are custom styled tooltips to give the user more information as to the button’s purpose. 
 
-### Experiences Page Features
+### Experience Page Features
 * The experience page is broken into two sections. The first section is the search and sort container, and the second section is the experience/results container 
 * Search Bar: The search container features a search bar that allows the user to search the site for experiences based on the Title of the experience. 
 * Reset Button: This button under the search bar will redirect the user back to the original Experiences page. 
@@ -206,3 +206,30 @@ I used two different fonts for this website
 * Form.py file: Create forms.py file and all logic for form validation to be done through this file. 
 * Profile Pagination: Create pagination for the bucket list and experience created section on the profile. Currently there is no pagination for these sections. 
 
+## Technologies Used
+### Languages 
+* [HTML](https://en.wikipedia.org/wiki/HTML5) 
+* [CSS](https://en.wikipedia.org/wiki/Cascading_Style_Sheets) 
+* [JavaScript](https://www.javascript.com/) 
+* [Python](https://en.wikipedia.org/wiki/Python_(programming_language)) 
+
+### Frameworks
+*	[jQuery:](https://jquery.com/): Used to enable tooltip functionality.
+*	[Bootstrap 5.01:](https://getbootstrap.com/) Used to style the website and help with the website’s responsiveness. 
+* [Google Developer Tools:](https://developer.chrome.com/docs/devtools/) Used to test responsive elements of page and to fix bugs.
+* [Git:](https://git-scm.com/)Useful to control and document page versions through git commits and git pushes.
+* [Github:](https://github.com/) Used to store project code and to deploy the website.
+* [Mongo DB:](https://www.mongodb.com/) Used to store the data for the website
+*	[Flask:](https://flask.palletsprojects.com/en/2.0.x/#) Used in site development to handle user data and python queries to database. 
+* [RandomKeygen:](https://randomkeygen.com/) Used to generate a secure secret key needed in order to use certain Flask features 
+* [Balsamiq:](https://balsamiq.com/) Used to draw up wireframes so I could visualise the design of the website.
+* [PDF2JPG:](https://pdf2jpg.net/) Used to convert exported wireframe PDFs to JPG images that can be viewed in ReadMe. 
+*	[Canva:](https://www.canva.com/) Used to create a simple logo for the website. 
+* [Windows Paint 3D:](https://www.microsoft.com/en-us/p/paint-3d/9nblggh5fv99?activetab=pivot:overviewtab) Used to create a transparent PNG of the Bucket List logo created on Canva
+* [Color Hunt:](https://colorhunt.co/) Used to find suitable background colours for styling.   
+*	[Online-Convert.com:](https://www.online-convert.com/) Used to convert the bucket logo to favicon format to be used in the experience cards. 
+
+
+### Libraries
+* [Google fonts:](https://fonts.google.com/) Used to find appropriate fonts for content of both the index and game page.
+* [Font Awesome:](https://fontawesome.com/icons?d=gallery&p=2) Provided the icons for the game buttons and the social media links in the footer. 
