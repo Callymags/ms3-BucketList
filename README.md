@@ -217,7 +217,7 @@ I used two different fonts for this website
 *	[jQuery:](https://jquery.com/): Used to enable tooltip functionality.
 *	[Bootstrap 5.01:](https://getbootstrap.com/) Used to style the website and help with the website’s responsiveness. 
 * [Google Developer Tools:](https://developer.chrome.com/docs/devtools/) Used to test responsive elements of page and to fix bugs.
-* [Git:](https://git-scm.com/)Useful to control and document page versions through git commits and git pushes.
+* [Git:](https://git-scm.com/) Useful to control and document page versions through git commits and git pushes.
 * [Github:](https://github.com/) Used to store project code and to deploy the website.
 * [Mongo DB:](https://www.mongodb.com/) Used to store the data for the website
 *	[Flask:](https://flask.palletsprojects.com/en/2.0.x/#) Used in site development to handle user data and python queries to database. 
@@ -232,5 +232,6 @@ I used two different fonts for this website
 
 
 ### Libraries
-* [Google fonts:](https://fonts.google.com/) Used to find appropriate fonts for content of both the index and game page.
-* [Font Awesome:](https://fontawesome.com/icons?d=gallery&p=2) Provided the icons for the game buttons and the social media links in the footer. 
+* [Google fonts:](https://fonts.google.com/) Used to find appropriate fonts for the website
+* [Font Awesome:](https://fontawesome.com/icons?d=gallery&p=2) Provided the icons for the website buttons and the social media links in the footer. 
+
