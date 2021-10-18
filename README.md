@@ -10,9 +10,19 @@
   * [User Stories](#user-stories)
   * [Wireframes](#wireframes)
 * [Features](#features)
-  * [General Design Choices](#general-design-choices)
-  * [Landing Page Features](#landing-page-features)
-  * [Game Page Features](#game-page-features)
+  * [Colour Palette](#colour-palette)
+  * [Fonts](#fonts)
+  * [Base Template Features](#base-template-features)
+  * [Home/Landing Page Features](#home/landing-page-features)
+  * [Register Features](#register-features)
+  * [Log In Features](#log-in-features)
+  * [Profile Features](#profile-features)
+  * [Experience Page Features](#experience-page-features)
+  * [Experience Info Features](#experience-info-page-features)
+  * [Create Experience Features](#create-experience-page-features)
+  * [Edit Experience Page](#edit-experience-page-features)
+  * [Admin Page Log In Details](#admin-page-log-in-details)
+  * [Admin Page](#admin-page-features)
   * [Future Features](#future-features)
 * [Technologies Used](#technologies-used)
   * [Languages](#languages)
@@ -103,8 +113,7 @@ It is important to note that I did not do a wireframe for certain pages like the
 Also, as you can see from the wireframes, there have been some changes to certain features when I began developing the pages. 
 
 ## Features 
-### General Design Choices
-#### Colour Palette
+### Colour Palette
 The three main colours I chose for the website are displayed in hex format below
 
 * Orange #ff6a3d: Used for the website brand, the font awesome icons, and the buttons on the website
@@ -112,10 +121,88 @@ The three main colours I chose for the website are displayed in hex format below
 * White #f8f8fb: Used for the font colour for buttons and nav-links on the site. I also used it for the social links in the footer. 
 * Black #101112: Used for the majority of the font colours on the site. 
 
-#### Fonts
+### Fonts
 I used two different fonts for this website
 
 * ['Crimson Text', serif:]( https://fonts.google.com/?query=crimson+text) Used for the website headings
 * ['Work Sans', sans-serif:]( https://fonts.google.com/?query=work+sans) Used for all other font elements of the website. 
 
+### Base Template Features
+* Links for dependencies: All relevant CSS, bootstrap, font awesome, JavaScript/jQuery links are coded in the base template. This means that I did not need to input these dependencies into each html page. 
+* Navbar: The navbar displays the website logo and all the navbar links. The user can only see certain navbar links depending on if they are logged in/out, or if they are admin/regular user. This was done through the use of flask conditional statements. 
+* Footer: The footer shows the GitHub and LinkedIn social links which will open a new tab for the user to view my LinkedIn profile and my GitHub repository for this project. 
+ 
+### Home/Landing Page Features
+* Hero Image: The landing page has a hero image with a short heading within to keep the user on the site. This image covers the whole width of the page and has custom CSS styling to darken it. This allows the heading in the middle of the image to stand out more
+* Latest Entries Section: This section displays the 8 most recent uploads made to the site by users. First time users can then view more information on these experiences but need to sign up/log in to add these experiences to their bucket list. 
+* Experience cards: The Experience cards show an image, title, and category of an experience. The cards show the name of the user who added the experience to the site and there is a button at the end of the card to view more information on the experience. This will redirect the user to another page. 
+
+### Register Features
+* Background Image: The background image is the same one that is on the home page. 
+* Register Card: The Register card looks for the user to input a username, email, and password. 
+* Register Validation: If the user inputs a username/email that is already in the database, a flash message will appear just below the navbar notifying them that the username/email is already taken. 
+* Username Credentials: The username must have 5-15 characters and cannot contain special characters. Otherwise, a pop-up will appear telling the user to follow this format. 
+* Email Credentials: The user email must have a typical email format. Otherwise, a pop-up will appear telling the user to follow this format. 
+* Password Credentials: The password must contain at least one number, one uppercase and lowercase letter, and at least 8 or more characters. Otherwise, a pop-up will appear telling the user to follow this format. 
+* Redirect to Log In page: There is a link within the Register card that redirects the user to the Log In page. 
+* Register Button: The user can click on the Register button once they have inputted their details. If the details are correct, they will be redirected to their new profile. 
+
+### Log In Features
+* Background Image: The background image is the same one that is on the home page. 
+* Log In Card: The Log In card looks for the user’s username and password they have used when signing up to the platform. 
+* Log In Validation: If the user inputs the wrong log in credentials, a flash message reading ‘Incorrect username and/or password’ will display just under the navbar informing the user of their mistake. 
+* Form Validation: The user must input certain credentials into the input fields of the form or else the form will not post the data. 
+* There is a specific format for the password that the user must follow. If the user inputs an incorrect format, a pop-up will notify them of the format they must follow.
+* Redirect to register page: There is a link within the log in card that redirects the user to the register page. 
+* Log In Button: The user can click on the log in button once they have inputted their details. If the details are correct, they will be redirected to the profile.
+
+### Profile Features
+* Welcome message: A welcome message is displayed to the user upon log in/sign up
+* Profile Card: The profile card displays the user’s info. These being their username, email, and how much experiences they have created. 
+* Edit Profile: The Edit Profile button redirects the user to another page with a form that allows the user to change their password. 
+* Delete Profile: The user can delete their profile if they want. The delete profile button opens a modal asking the user if they are sure they want to delete their profile.  
+* Bucket List Section: This section of the profile displays the user’s custom bucket list. The list if full of experiences they have saved to their profile and is styled to display the experience as cards. The user can then choose to remove these experiences from their bucket list if they want. 
+* No Items in Bucket List Section: The user will see a link in the Bucket List section if they have not yet saved any items to their bucket list. The link will redirect them to the experiences page where they can browse all experiences on the site.   
+* Experiences Created Section: This section of the profile displays a list of all the experiences created by the user. The experiences are shown in card format. 
+* No Items in Experiences Created Section: The user will see a link in the Experiences Created section if they have not yet created any experiences on the. The link will redirect them to the Create Experience page. 
+* Experience Card tooltips: The experience cards have two buttons at the bottom that will allow the user to add/remove experience from their Bucket List, or to see more information about the experience. The buttons are displayed as icons but if the user hovers over the image, there are custom styled tooltips to give the user more information as to the button’s purpose. 
+
+### Experiences Page Features
+* The experience page is broken into two sections. The first section is the search and sort container, and the second section is the experience/results container 
+* Search Bar: The search container features a search bar that allows the user to search the site for experiences based on the Title of the experience. 
+* Reset Button: This button under the search bar will redirect the user back to the original Experiences page. 
+* Sort filter: The search container also features a Sort filter that allows the user to sort all experiences by Category, or by Date Uploaded. 
+* Pagination: The Sort filter returns a lot more results than a specific search query. Therefore, pagination was inputted for the filter results. The pagination only displays eight cards per page and there are links at the bottom of the experiences container to go to the next page of experiences.
+
+### Experience Info Page Features
+* The experience info shows the usual card features but also shows the experience description.
+* The user can also edit/delete the experience from the Experience Info page if they are the one who created the experience. Other users will not be able to view these settings as a result of flask conditional statements inputted into the html page. 
+* Delete Experience Button: The delete experience button opens a modal that asks the user if they are sure they want to delete the experience from the site. 
+* Edit Experience Button: The edit experience button redirects the user to the Edit Experience Page
+ 
+
+### Create Experience Page Features
+* The create experience page features a form for the user to input the necessary details that give information about the experience they want to upload. 
+* Experience Title Requirements: The title of the experience must be between 5 and 30 characters and the form will not post if nothing is inputted into this field. 
+* Category Dropdown: The Category dropdown only allows the user to choose from a limited list of categories for their experience. Only the admin can create a new experience category. The form will not post if nothing is inputted into this field. 
+* Image Address: The image address will render the image for the experience on the card. The form will not post if nothing is inputted into this field. 
+* Description: The user must give the community more information about this experience by inputting more details into this field. The text area must have 5-200 characters and the form will not post if nothing is inputted into this field.
+
+### Edit Experience Page Features
+* The edit experience page is very similar to the create experience page. It features a form for the user to input the necessary details that give information about the experience they want to edit. 
+* The previous experience details will be inputted by default into each of the input fields. The user can then edit the information that is displayed to them in the inputs. 
+
+### Admin Page Log in Details
+* The admin page log in details are as follows. Username: admin. Password: DVDPlayer19
+
+### Admin Page Features
+* The admin has an extra ‘Manage Categories’ link that allows the admin to add or remove an experience category. Once this category is added, a user will be able to choose this category from the dropdown menu once they are creating an experience.
+* The admin also has the power to delete or edit any experience that is on the site. This is to ensure that all experience cards look clean and that there are no inappropriate cards on the site. 
+* Once the admin deletes an experience, it will be deleted from all user’s bucket lists if they have saved it as it no longer exists. 
+
+### Future Features
+* Done It List: I wanted the user’s to be able to have a ‘Done It List’ on their profile also but didn’t have time to develop this feature on the site. This would have allowed users to add an experience that they have completed to their own Done It List. 
+* Contact Page: The user could send a message to the developer via an email that is sent through the Contact Page
+* Form.py file: Create forms.py file and all logic for form validation to be done through this file. 
+* Profile Pagination: Create pagination for the bucket list and experience created section on the profile. Currently there is no pagination for these sections. 
 
