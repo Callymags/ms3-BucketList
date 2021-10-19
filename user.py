@@ -106,20 +106,25 @@ def profile(username):
         email = mongo.db.users.find_one(
             {'username': session['user']})['email']
         experiences = list(mongo.db.experiences.find({'added_by': session['user']}))
-        saved_exp = mongo.db.users.find_one(
-            {'username': session['user']})['bucket_list']
-
+        # Queries database to see if experience is in the user's bucket list
+        user_bucket_list = mongo.db.users.find_one(
+            {"username": session["user"]})["bucket_list"]
         # creates an empty array
         bucket_lists = []
 
         # Each of the users saved experiences is appended to the empty array.
         # The bucket_lists array allows us to get the experience info needed to generate
         # cards for Bucket List section of profile
-        for exp_id in saved_exp:
+        for exp_id in user_bucket_list:
             exp_id = mongo.db.experiences.find_one({"_id": ObjectId(exp_id)})
             bucket_lists.append(exp_id)
-        return render_template('profile.html', username=username, email=email,
-                               experiences=experiences, bucket_lists=bucket_lists)
+        return render_template(
+            'profile.html', 
+            username=username, 
+            email=email,
+            experiences=experiences,
+            user_bucket_list= user_bucket_list,
+            bucket_lists=bucket_lists)
     # Redirects user to log in screen if they are not logged in                          
     else:
         return redirect(url_for('user.log_in'))

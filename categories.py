@@ -6,14 +6,26 @@ from bson.objectid import ObjectId
 # Import database instance of PyMongo
 from database import mongo
 
+from utils import is_admin
+
+
 categories = Blueprint(
     'categories', __name__, static_folder='static', template_folder='templates'
     )
 
 @categories.route('/get_categories')
 def get_categories():
-    categories = list(mongo.db.categories.find().sort('category_name', 1))
-    return render_template('categories.html', categories=categories)
+    """
+    Queries the database to find all categories in categories collection
+    """
+    # Will only render page if user is admin
+    if is_admin():
+        categories = list(mongo.db.categories.find().sort('category_name', 1))
+        return render_template('categories.html', categories=categories)
+    else: 
+        flash('You need to be an admin to view this page')
+        return redirect(url_for('user.log_in'))
+
 
 
 @categories.route('/add_category', methods=['GET', 'POST'])

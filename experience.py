@@ -42,6 +42,7 @@ def create_exp():
             return render_template("create_experience.html", categories=categories)
     # Redirects user to log in screen if they are not logged in                          
     else:
+        flash("You need to log in to perform this operation")
         return redirect(url_for('user.log_in'))
 
 
@@ -50,10 +51,19 @@ def exp_info(exp_id):
     """
     Renders a specific experience card's information 
     """
-    info = mongo.db.experiences.find_one({'_id': ObjectId(exp_id)})
-    return render_template(
+    # Queries database to see if experience is in the user's bucket list
+    if is_logged_in():
+        user_bucket_list = mongo.db.users.find_one(
+        {"username": session["user"]})["bucket_list"]
+        info = mongo.db.experiences.find_one({'_id': ObjectId(exp_id)})
+        return render_template(
         "experience_info.html", 
-        info=info)
+        info=info, 
+        user_bucket_list=user_bucket_list)
+    # Redirects user to log in screen if they are not logged in                          
+    else:
+        flash("You need to log in to perform this operation")
+        return redirect(url_for('user.log_in'))
 
 @experience.route("/edit_exp/<exp_id>", methods=['GET', 'POST'])
 def edit_exp(exp_id):
@@ -74,17 +84,21 @@ def edit_exp(exp_id):
             }
             mongo.db.experiences.update({'_id': ObjectId(exp_id)}, edit)
             flash("Experience Successfully Updated!")
-            return redirect(url_for('experience.exp_info', username=session['user'], exp_id=exp_id))
+            return redirect(url_for('experience.exp_info', 
+            username=session['user'], 
+            exp_id=exp_id))
         # GET method retrieves expereince data that user can update
         else: 
             experience = mongo.db.experiences.find_one({'_id': ObjectId(exp_id)})
             categories = mongo.db.categories.find().sort("category_name", 1)
-            return render_template("edit_experience.html", experience=experience, categories=categories)
+            return render_template("edit_experience.html", 
+            experience=experience, 
+            categories=categories)
     # Redirects user to log in screen if they are not logged in                          
     else:
+        flash("You need to log in to perform this operation")
         return redirect(url_for('user.log_in'))
     
-
 
 @experience.route('/delete_exp/<exp_id>')
 def delete_exp(exp_id):
@@ -106,6 +120,7 @@ def delete_exp(exp_id):
         return redirect(url_for("user.profile", username=session['user']))
     # Redirects user to log in screen if they are not logged in                          
     else:
+        flash("You need to log in to perform this operation")
         return redirect(url_for('user.log_in'))
 
 
@@ -118,7 +133,7 @@ def get_exp():
         experiences = list(mongo.db.experiences.find().sort('_id', 1))
         # Queries database to see if experience is in the user's bucket list
         user_bucket_list = mongo.db.users.find_one(
-            {"username": session["user"]})["bucket_list"] if is_logged_in() else None
+            {"username": session["user"]})["bucket_list"]
         # pagination adapted from mozillazg (credited in README)
         page, per_page, offset = get_page_args(
             page_parameter='page', per_page_parameter='per_page')
@@ -136,6 +151,7 @@ def get_exp():
             user_bucket_list=user_bucket_list)
     # Redirects user to log in screen if they are not logged in                          
     else:
+        flash("You need to log in to perform this operation")
         return redirect(url_for('user.log_in'))
 
 @experience.route('/search', methods=['GET', 'POST'])
@@ -146,7 +162,7 @@ def search():
     if is_logged_in():
         # Queries database to see if experience is in the user's bucket list
         user_bucket_list = mongo.db.users.find_one(
-            {"username": session["user"]})["bucket_list"] if is_logged_in() else None
+            {"username": session["user"]})["bucket_list"]
         query = request.form.get("query", "")
         results = list(mongo.db.experiences.find(
             {"$text": {"$search": query}})) if request.method == "POST" else ""
@@ -156,6 +172,7 @@ def search():
             user_bucket_list=user_bucket_list)
     # Redirects user to log in screen if they are not logged in                          
     else:
+        flash("You need to log in to perform this operation")
         return redirect(url_for('user.log_in'))
 
 @experience.route('/filter/<filter_type>/<order>')
@@ -169,7 +186,7 @@ def filter(filter_type, order):
         experiences = list(mongo.db.experiences.find().sort(filter_type))
         # Queries database to see if experience is in the user's bucket list
         user_bucket_list = mongo.db.users.find_one(
-            {"username": session["user"]})["bucket_list"] if is_logged_in() else None
+            {"username": session["user"]})["bucket_list"]
         page, per_page, offset = get_page_args(
         page_parameter='page', per_page_parameter='per_page')
         per_page = 8
@@ -187,6 +204,7 @@ def filter(filter_type, order):
             user_bucket_list=user_bucket_list)
     # Redirects user to log in screen if they are not logged in                          
     else:
+        flash("You need to log in to perform this operation")
         return redirect(url_for('user.log_in'))
         
 
@@ -199,7 +217,7 @@ def categories(category):
     if is_logged_in():
         # Queries database to see if experience is in the user's bucket list
         user_bucket_list = mongo.db.users.find_one(
-            {"username": session["user"]})["bucket_list"] if is_logged_in() else None
+            {"username": session["user"]})["bucket_list"]
         # returns a list of all experiences in Activity category
         if category == 'Activity':
             experiences = list(
@@ -233,6 +251,7 @@ def categories(category):
             )
     # Redirects user to log in screen if they are not logged in                          
     else:
+        flash("You need to log in to perform this operation")
         return redirect(url_for('user.log_in'))
 
 @experience.route("/add_bucket_list/<exp_id>", methods=["GET", "POST"])
@@ -257,10 +276,11 @@ def add_bucket_list(exp_id):
         return redirect(url_for("user.profile", username=session['user']))
     # Redirects user to log in screen if they are not logged in                          
     else:
+        flash("You need to log in to perform this operation")
         return redirect(url_for('user.log_in'))
 
 
-@experience.route("/remove_bucket_list/<exp_id>", methods=["POST"])
+@experience.route("/remove_bucket_list/<exp_id>", methods=["GET", "POST"])
 def remove_bucket_list(exp_id):
     """
     Filters the experience by object Id and removes it  
@@ -268,13 +288,14 @@ def remove_bucket_list(exp_id):
     """
     if is_logged_in():
         user = mongo.db.users.find_one({"username": session["user"]})
-
         # Remove experience
         user['bucket_list'].remove(ObjectId(exp_id))
-        mongo.db.users.update_one({'username': session['user']}, 
-                        {'$set': {'bucket_list': user['bucket_list']}})
+        mongo.db.users.update_one(
+            {'username': session['user']}, 
+            {'$set': {'bucket_list': user['bucket_list']}})
         flash('Experience Removed from Bucket List')
         return redirect(url_for("user.profile", username=session['user']))
     # Redirects user to log in screen if they are not logged in                          
     else:
+        flash("You need to log in to perform this operation")
         return redirect(url_for('user.log_in'))
