@@ -127,6 +127,7 @@ def profile(username):
             bucket_lists=bucket_lists)
     # Redirects user to log in screen if they are not logged in                          
     else:
+        flash("You need to log in to perform this operation")
         return redirect(url_for('user.log_in'))
 
 @user.route("/log_out")
@@ -138,6 +139,10 @@ def log_out():
         # Remove user's session cookie
         flash('You are logged out')
         session.pop('user')
+        return redirect(url_for('user.log_in'))
+    # Redirects user to log in screen if they are not logged in                          
+    else:
+        flash("You need to log in to perform this operation")
         return redirect(url_for('user.log_in'))
 
 @user.route("/update_password/<username>", methods=['GET', 'POST'])
