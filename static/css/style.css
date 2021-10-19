@@ -116,7 +116,7 @@ form {
 /* -----------------REGISTER----------------- */
 
 .register-container {
-    background: linear-gradient(#0000005c, #00000070), url(https://www.conexioconsulting.com/wp-content/uploads/2019/07/hot-air-balloon-festival-cappadocia-turkey.jpg) no-repeat center fixed; 
+    background: linear-gradient(#0000005c, #00000070), url("../images/hero-image-hot-air-balloon.jpg") no-repeat center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -151,7 +151,7 @@ form {
 }
 /* -----------------LOG IN----------------- */
 .login-container {
-    background: linear-gradient(#0000005c, #00000070), url(https://www.conexioconsulting.com/wp-content/uploads/2019/07/hot-air-balloon-festival-cappadocia-turkey.jpg) no-repeat center fixed; 
+    background: linear-gradient(#0000005c, #00000070), url("../images/hero-image-hot-air-balloon.jpg") no-repeat center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -199,7 +199,7 @@ form {
 /* -----------------HOME----------------- */
 
 .home-image-container {
-    background: linear-gradient(#0000005c, #00000070), url(https://www.conexioconsulting.com/wp-content/uploads/2019/07/hot-air-balloon-festival-cappadocia-turkey.jpg) no-repeat center fixed; 
+    background: linear-gradient(#0000005c, #00000070), url("../images/hero-image-hot-air-balloon.jpg") no-repeat center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -232,14 +232,6 @@ form {
 /* ----------------- EXPERIENCES CARD ----------------- */
 .experiences-container {
     overflow-x: hidden;
-}
-
-.bucket-button-style {
-    height: 2.5rem;
-}
-
-.exp-button {
-    font-size: 2rem;
 }
 
 /* 
@@ -280,15 +272,20 @@ End of contribution
 }
 
 .exp-title {
-    height: 4.5rem;
+    height: 2.5rem;
 }
 
 .bucket-list-form {
     display: inline;
 }
 
+/* ----------------- EXPERIENCE INFO CARD ----------------- */
 
-/* ----------------- EXPERIENCE INFO ----------------- */
+.exp-info-image  {
+    height: 20rem;
+    object-fit: cover;
+}
+
 .exp-dropup {
     display: inline;
 }
