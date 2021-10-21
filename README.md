@@ -10,6 +10,7 @@
   * [User Stories](#user-stories)
   * [Wireframes](#wireframes)
 * [Features](#features)
+  * [Database Schema](#database-schema)
   * [Colour Palette](#colour-palette)
   * [Fonts](#fonts)
   * [Base Template Features](#base-template-features)
@@ -37,8 +38,10 @@
   * [Site Performance](#site-performance)
   * [Code Validation](#code-validation)
 * [Bugs Encountered](#bugs-encountered)
+* [Database Creation](#database-creation)
 * [Deployment](#deployment)
-  * [GitHub Pages](#github-pages)
+  * [GitPod and Github](#gitpod-and-github)
+  * [Heroku](#heroku)
   * [Forking the GitHub Repository](#forking-the-github-repository)
   * [Making a Local Clone](#making-a-local-clone)
 * [Contributions](#contributions)
@@ -114,6 +117,11 @@ It is important to note that I did not do a wireframe for certain pages like the
 Also, as you can see from the wireframes, there have been some changes to certain features when I began developing the pages. 
 
 ## Features 
+### Database Schema
+I created the database for the site using [MongoDB.](https://www.mongodb.com/) The schema can be seen in the diagram below. 
+
+![Database Schema](static/images/database-schema.png)
+
 ### Colour Palette
 The three main colours I chose for the website are displayed in hex format below
 
@@ -419,3 +427,68 @@ def search():
         experiences = list(mongo.db.experiences.find({"$text": {"$search": query}}))
     return render_template('search.html', experiences=experiences)
 ```
+## Database Creation
+
+Bucket List is connected to the MongoDB database. The following steps were used to create the database. 
+
+1. Log in or create an account with [MongoDB](https://mongodb.com)
+2. Create a new shared cluster (if using free cluster)
+3. Select a Cloud provider. Amazon Web Services (AWS) is a recommended service. 
+4. Select a region (whichever region is closest).
+5. Select Cluster Tier.
+6. Add a Cluster Name. 
+7. Click "Create Cluster" button. 
+8. Click on the "Database Access" in order to create the database user credentials. 
+9. Click "Add New Database User". 
+10. Set up a "username" & "password" and ensure User Privileges are set to "Read and write to any database". 
+11. Click "Add User" button. 
+12. Click on "Network Access" in order to whitelist our IP address and make sure it has access to the database.
+13. Click "Add IP Address"
+14. For the purposes of this project select "Allow access from anywhere". 
+15. Click on "Clusters" followed by the "Collections" button. 
+16. Click "Add my own data" button, and add a "Database Name" and "Collection Name". 
+17. Clicking "Create" will create the database with a collection inside that database. 
+
+## Deployment
+
+### GitPod and GitHub
+Bucket List's website was coded using the GitPod IDE. The git repository is stored locally before being pushed online to the GitHub remote repository.
+To push the code to the remote repository you follow these steps.
+
+1. Save any local changes made in the GitPod IDE by pressing File -> Save All (or Ctrl+Shift+S).
+2. Add these changes to the git staging area by using the ```git add -A``` command in the terminal.
+3. Commit changes using the ```git commit -m "changes"``` command.
+4. Push these changes to a remote repository using the ```git push``` command.
+
+### Heroku
+I used Heroku to deploy a live version of the site. Below are the steps of the deployment:
+
+1. Create a new app in Heroku
+2. In the GitPod terminal, create a Procfile & requirments.txt with the dependencies listed using `pip3 freeze --local > requirements.txt`. Heroku will then know what files to look for so it can run the app.
+3. In the GitPod terminal, enter the following: `echo web: python app.py > Procfile`.
+4. On the Heroku site, set up automatic deployment by clicking the deploy tab and clicking GitHub as the deployment method.
+5. Ensure your GitHub profile is displayed, then add the name of the repository and click search. Your repository should come up in the search results.
+6. Click "Connect" to the correct repository.
+7. Click the "Settings" tab and then click "Reveal Config Vars".
+Here we can securely tell Heroku which variables are required. These can be found in the "env.py" file and are as follows:
+* Key: IP, Value: 0.0.0.0 
+* Key: PORT, Value: 5000 
+* Key: SECRET_KEY, Value: Randomly Generated key
+* Key: MONGO_URI, Value: MongoDB URI
+* Key: MONGO_DBNAME, Value: MongoDB Database Name
+
+### Forking the GitHub Repository 
+By forking the GitHub Repository, we make a copy of the original repository on our GitHub account. This allows us to view and/or make changes without
+affecting the original repository by using the following steps:
+
+1. Log in to GitHub and locate the [GitHub Repository](https://github.com/Callymags/MS2-Arrow-Dash) you want to fork.
+2. At the top of the Repository, located underneath the navbar, click the "Fork" button.
+3. You should now have a copy of the original repository in your account.
+
+### Making a Local Clone 
+1. Log into GitHub and locate the [GitHub Repository](https://github.com/Callymags/ms3-BucketList) you want to clone.
+2. Click the dropdown labelled "Code" and copy the link shown.
+3. Open Git Bash.
+4. Change to the location where you want the cloned directory to be made.
+5. Type "gitclone" and then paste the URL you copied in step 2.
+6. Press Enter to create your local clone.
