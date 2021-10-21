@@ -496,3 +496,31 @@ affecting the original repository by using the following steps:
 4. Change to the location where you want the cloned directory to be made.
 5. Type "gitclone" and then paste the URL you copied in step 2.
 6. Press Enter to create your local clone.
+
+## Contributions 
+### Code 
+1. **Stack Overflow**
+*  The following thread allowed me to add a custom validation message to the category form if the admin did not match the form requirements. [View here.](https://stackoverflow.com/questions/5272433/html5-form-required-attribute-set-custom-validation-message)
+*  The following thread allowed me to figure out why my delete category modal was not deleting the correct card. [View here.](https://stackoverflow.com/questions/42441574/passing-information-to-modal-in-for-loop)
+* The following thread allowed me to change the customise the colour of the bootstrap tooltips 
+[View here.](https://stackoverflow.com/questions/17642447/change-bootstrap-tooltip-color)
+
+2. **W3 Schools**
+* The following article allowed me to add title elements to the register form if users did not match the form requirements. It also allowed me to add a specific password pattern [View here.](https://www.w3schools.com/tags/att_input_pattern.asp)
+
+3. **YouTube**
+•	The following video explained how python blueprints work and allowed me to set up the blueprints in the separate python files. [View here.](https://www.youtube.com/watch?v=WteIH6J9v64)  
+•	The following video helped me to vertically centre the content on my custom error pages.
+[View here.](https://www.youtube.com/watch?v=qJVVZYTYA9U&t=362s)
+
+4. **Articles**
+* [The Flask Mega Tutorial: ](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-ii-templates) Used in the initial set up of the project to organise flask files. 
+* [Use a Flask Blueprint to Architect Your Applications: ](https://realpython.com/flask-blueprint/) The following article gave me more information on how to set up Flask Blueprints in separate python files. 
+5. **GitHub**
+*  The following thread helped me to add pagination when querying the mongo database to find experiences. [View here.](https://gist.github.com/mozillazg/69fb40067ae6d80386e10e105e6803c9) 
+
+## Acknowledgements
+* My mentor, Reuben Ferrante for the invaluable feedback during the project.
+* Code Institute Slack channel: Provided support when I encountered some problems with code.
+* Code Institute Tutor Support: Guided me in the right direction when I encountered big problems that I couldn’t solve in my code. 
+* Friends & Family: Tested the website.

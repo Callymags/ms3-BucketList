@@ -204,7 +204,7 @@ form {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    height: 80vh;
+    height: 100vh;
     overflow-x: hidden;
     overflow-y: hidden;
 }
