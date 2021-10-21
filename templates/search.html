@@ -108,7 +108,7 @@
                                 {% endif %}
                                 {% else %}
                                 <form method="POST" class='bucket-list-form'
-                                    action="{{ url_for('experience.add_bucket_list', exp_id=experience._id) }}">
+                                    action="{{ url_for('experience.add_bucket_list', exp_id=result._id) }}">
                                     <button type="submit" class="btn btn-large" data-bs-toggle="tooltip"
                                         title="Add to Bucket List" data-bs-placement="top">
                                         <i class="fas fa-plus-circle icon-button-style"></i>

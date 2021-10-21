@@ -334,4 +334,22 @@ Browser compatibility was physically tested across the different browsers listed
 * Google Chrome Version 89.0.43389.114
 * Microsoft Edge Version 89.0.774.68
 * Mozilla Firefox Version 87.0
+
 No problems were found
+
+### Site Performance 
+I tested the site’s performance with the help of [Lighthouse](https://developers.google.com/web/tools/lighthouse) which can be found in Google Developer Tools. Lighthouse enabled me to generate a report on all the website pages which can be viewed by clicking on the links below.
+
+* [Home](static/images/lighthouse-performance/home-lighthouse-perf.jpg)
+* [Log In Page](static/images/lighthouse-performance/log-in-lighthouse-perf.jpg)
+* [Register Page](static/images/lighthouse-performance/register-lighthouse-perf.jpg)
+* [Profile Page](static/images/lighthouse-performance/profile-lighthouse-perf.jpg)
+* [Experiences Page](static/images/lighthouse-performance/experiences-lighthouse-perf.jpg)
+* [Search Page](static/images/lighthouse-performance/search-lighthouse-perf.jpg)
+* [Create Experience Page](static/images/lighthouse-performance/create-exp-lighthouse-perf.jpg)
+* [Edit Experience Page](static/images/lighthouse-performance/exp-edit-lighthouse-perf.jpg)
+* [Experience Info Page](static/images/lighthouse-performance/exp-info-lighthouse-perf.jpg)
+* [Manage Categories Page](static/images/lighthouse-performance/manage-categories-lighthouse-perf.jpg)
+* [Add Category Page](static/images/lighthouse-performance/add-category-lighthouse-perf.jpg)
+
+I was happy that all pages had a relatively high score.
