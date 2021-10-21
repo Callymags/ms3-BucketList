@@ -83,7 +83,6 @@ body {
     background-color: #1a2238;
     color: #f8f8fb;
     padding-top: 1rem;
-    padding-bottom: 1rem;
 
     margin-top: auto;
 }
@@ -116,7 +115,7 @@ form {
 /* -----------------REGISTER----------------- */
 
 .register-container {
-    background: linear-gradient(#0000005c, #00000070), url("../images/hero-image-hot-air-balloon.jpg") no-repeat center fixed; 
+    background: linear-gradient(#0000005c, #00000070), url("../images/hero-image-hot-air-balloon.jpg") no-repeat top fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -151,7 +150,7 @@ form {
 }
 /* -----------------LOG IN----------------- */
 .login-container {
-    background: linear-gradient(#0000005c, #00000070), url("../images/hero-image-hot-air-balloon.jpg") no-repeat center fixed; 
+    background: linear-gradient(#0000005c, #00000070), url("../images/hero-image-hot-air-balloon.jpg") no-repeat top fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -199,12 +198,12 @@ form {
 /* -----------------HOME----------------- */
 
 .home-image-container {
-    background: linear-gradient(#0000005c, #00000070), url("../images/hero-image-hot-air-balloon.jpg") no-repeat center fixed; 
+    background: linear-gradient(#0000005c, #00000070), url("../images/hero-image-hot-air-balloon.jpg") no-repeat top fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    height: 80vh;
+    height: 90vh;
     overflow-x: hidden;
     overflow-y: hidden;
 }
