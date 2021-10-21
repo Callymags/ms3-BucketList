@@ -229,6 +229,20 @@ form {
     padding-top: 2rem;
 }
 
+.four-steps {
+    margin: 2rem auto;
+}
+
+.four-steps-header {
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-left: 0.5rem;
+}
+
+.four-steps-img {
+    height: 9rem;
+}
+
 /* ----------------- EXPERIENCES CARD ----------------- */
 .experiences-container {
     overflow-x: hidden;
