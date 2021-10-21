@@ -2,11 +2,8 @@ from flask import (
     Blueprint, flash, render_template, redirect, request, session, url_for
 )
 from werkzeug.security import generate_password_hash, check_password_hash
-
 from bson.objectid import ObjectId
-
 from database import mongo
-
 from utils import is_logged_in
 
 # Create Blueprint to be imported to app.py
@@ -42,9 +39,8 @@ def register():
             # Redirect user back to register to try again
             return redirect(url_for("user.register"))
 
-
         # If no existing user is found
-        register = {
+        register_user = {
             'username': request.form.get("username").lower(),
             'email': request.form.get("email").lower(),
             # Use werkzeug security helpers
@@ -52,15 +48,14 @@ def register():
             'bucket_list': []
         }
         # Call users collection on MongoDB
-        mongo.db.users.insert_one(register)
+        mongo.db.users.insert_one(register_user)
 
         # Put the new user into session cookie
         session['user'] = request.form.get('username').lower()
-        # Display flash message to user after username is placed into session cookie
         flash('Registration Successful!')
         return redirect(url_for('user.profile', username=session['user']))
-        
-    return render_template("register.html")
+    else:     
+        return render_template("register.html")
 
 
 @user.route("/log_in", methods=['GET', 'POST'])
@@ -74,7 +69,7 @@ def log_in():
             {'username': request.form.get('username').lower()})
 
         if existing_user: 
-        # Ensure hashed password matches user input 
+            # Ensure hashed password matches user input 
             if check_password_hash(
                 existing_user['password'], request.form.get('password')):
                 # Put new user into session cookie
@@ -90,13 +85,14 @@ def log_in():
             # username doesn't exist 
             flash('Incorrect username and/or password')
             return redirect(url_for('user.log_in'))
-    
-    return render_template('login.html')
+    else:
+        return render_template('login.html')
+
 
 @user.route("/profile/<username>/", methods=['GET', 'POST'])
 def profile(username):
     """
-    Generates the user's profile. Queries the mongo database to find the user's username, 
+    Generates the user's profile. Queries the mongo database to find username, 
     email, bucket_list and the experiences the user has created
     """
     # Only queries db if user is logged in
@@ -130,6 +126,7 @@ def profile(username):
         flash("You need to log in to perform this operation")
         return redirect(url_for('user.log_in'))
 
+
 @user.route("/log_out")
 def log_out():
     """
@@ -144,6 +141,7 @@ def log_out():
     else:
         flash("You need to log in to perform this operation")
         return redirect(url_for('user.log_in'))
+
 
 @user.route("/update_password/<username>", methods=['GET', 'POST'])
 def change_password(username):
@@ -171,6 +169,7 @@ def change_password(username):
     else: 
         flash('You need to log in to perform that operation')
         return redirect(url_for('user.log_in'))
+
 
 @user.route("/delete_profile")
 def delete_profile():

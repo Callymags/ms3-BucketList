@@ -1,6 +1,6 @@
 from flask import session
-
 from database import mongo
+
 
 def is_logged_in():
     return session.get("user")
@@ -42,4 +42,3 @@ def filter_exp_cat_paginate(category, offset=0, per_page=8):
     else:
         experiences = list(mongo.db.experiences.find({"category_name": "Travel"}))
     return experiences[offset: offset + per_page]
-

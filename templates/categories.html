@@ -9,7 +9,7 @@
         </div>
     </div>
     <div class="row">
-        {% for category in categories %}
+        {% for category in all_categories %}
         <div class="col-lg-4 col-md-6 col-sm-12">
             <div class="card cat-card text-center">
                 <div class="card-body">
@@ -36,7 +36,7 @@
                                             database?
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-large btn-secondary"
+                                            <button type="button" class="btn btn-large orange-btn"
                                                 data-bs-dismiss="modal">Close</button>
                                             <a type="button"
                                                 href="{{ url_for('categories.delete_cat', cat_id=category._id) }}"

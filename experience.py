@@ -3,10 +3,7 @@ from flask import (
     Blueprint, flash, render_template, redirect, session, request, url_for)
 from flask_paginate import Pagination, get_page_args
 from bson.objectid import ObjectId
-
-# Import database instance of PyMongo
 from database import mongo
-
 from utils import (
     is_logged_in, get_exp_paginate, exp_paginate_desc, filter_exp_cat_paginate,
     is_admin)
@@ -39,7 +36,9 @@ def create_exp():
         # Get method to retrieve category choices for dropdown
         else:
             categories = mongo.db.categories.find().sort("category_name", 1)
-            return render_template("create_experience.html", categories=categories)
+            return render_template(
+                "create_experience.html",
+                categories=categories)
     # Redirects user to log in screen if they are not logged in                          
     else:
         flash("You need to log in to perform this operation")
@@ -64,6 +63,7 @@ def exp_info(exp_id):
     else:
         flash("You need to log in to perform this operation")
         return redirect(url_for('user.log_in'))
+
 
 @experience.route("/edit_exp/<exp_id>", methods=['GET', 'POST'])
 def edit_exp(exp_id):
@@ -98,7 +98,7 @@ def edit_exp(exp_id):
     else:
         flash("You need to log in to perform this operation")
         return redirect(url_for('user.log_in'))
-    
+
 
 @experience.route('/delete_exp/<exp_id>')
 def delete_exp(exp_id):
@@ -154,6 +154,7 @@ def get_exp():
         flash("You need to log in to perform this operation")
         return redirect(url_for('user.log_in'))
 
+
 @experience.route('/search', methods=['GET', 'POST'])
 def search():
     """
@@ -174,6 +175,7 @@ def search():
     else:
         flash("You need to log in to perform this operation")
         return redirect(url_for('user.log_in'))
+
 
 @experience.route('/filter/<filter_type>/<order>')
 def filter(filter_type, order):
@@ -206,7 +208,7 @@ def filter(filter_type, order):
     else:
         flash("You need to log in to perform this operation")
         return redirect(url_for('user.log_in'))
-        
+       
 
 @experience.route('/filter/<category>')
 def categories(category):
@@ -253,6 +255,7 @@ def categories(category):
     else:
         flash("You need to log in to perform this operation")
         return redirect(url_for('user.log_in'))
+
 
 @experience.route("/add_bucket_list/<exp_id>", methods=["GET", "POST"])
 def add_bucket_list(exp_id):
