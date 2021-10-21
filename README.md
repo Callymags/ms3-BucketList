@@ -1,5 +1,5 @@
 # Bucket List
-![Mock Up Image]()
+![Mock Up Image](static/images/site-readme-image.jpg)
 * You can view the GitHub repository [here.](https://github.com/Callymags/ms3-BucketList)
 * You can view the live project [here.]()
 
