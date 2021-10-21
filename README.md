@@ -1,7 +1,6 @@
 # Bucket List
 ![Mock Up Image](static/images/site-readme-image.jpg)
-* You can view the GitHub repository [here.](https://github.com/Callymags/ms3-BucketList)
-* You can view the live project [here.]()
+* You can view the live project [here.](https://ms3-bucketlist-project.herokuapp.com/)
 
 ## Table of Contents
 * [Project Description](#project-description)
