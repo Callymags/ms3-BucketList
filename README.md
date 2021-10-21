@@ -201,7 +201,11 @@ I used two different fonts for this website
 * The previous experience details will be inputted by default into each of the input fields. The user can then edit the information that is displayed to them in the inputs. 
 
 ### Admin Page Log in Details
-* The admin page log in details are as follows. Username: admin. Password: DVDPlayer19
+* The admin page log in details are as follows.
+
+| Username | Password |
+| :----: | :----: |
+| admin | DVDPlayer19 |
 
 ### Admin Page Features
 * The admin has an extra ‘Manage Categories’ link that allows the admin to add or remove an experience category. Once this category is added, a user will be able to choose this category from the dropdown menu once they are creating an experience.
