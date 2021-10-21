@@ -362,6 +362,7 @@ I was happy that all pages had a relatively high score.
 
 ## Bugs Encountered 
 * **AttributeError: 'NoneType' object has no attribute 'encode'**
+
 Problem: When clicking the update button on the update password page, I would get a Jinja Attribute error that was targeting the section of my update_password function below 
 
 ```
@@ -395,6 +396,7 @@ aria-labelledby="DeleteCatModalLabel" aria-hidden="true">
 ```
 
 * ** Jinja Error: "$search" had the wrong type. Expected string, found null" **
+
 Problem: When creating the search functionality, I encountered a problem with my python search function that would display as a Jinja Error message reading "$search" had the wrong type. Expected string, found null".
 
 The following python code was used when trying to add the functionality
