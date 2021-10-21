@@ -15,7 +15,7 @@
                             <i class="fas fa-user icon-style"></i>
                             <label for="username" class="form-label">Username</label>
                             <input type="username" name="username" class="form-control" id="username" 
-                            pattern="^[a-zA-Z0-9]{5,20}$" minlength="5" maxlength="15"
+                            pattern="^[a-zA-Z0-9]{5,20}$" minlength="5" maxlength="20"
                             title="Username must have 5-20 characters, and cannot contain special characters" required>
                         </div>
                         <div class="mb-3">
@@ -29,9 +29,9 @@
                             <i class="fas fa-lock icon-style"></i>
                             <label for="password" class="form-label">Password</label>
                             <input type="password" name="password" class="form-control" id="password"
-                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}"
+                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}"
                             title="Must contain at least one number, one uppercase and lowercase 
-                            letter, and at least 8 or more characters" required>
+                            letter, and 8-15 characters" required>
                         </div>
                         <div class="mb-3">
                             <p>Already have an account?
