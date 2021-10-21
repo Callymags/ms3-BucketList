@@ -471,11 +471,14 @@ I used Heroku to deploy a live version of the site. Below are the steps of the d
 6. Click "Connect" to the correct repository.
 7. Click the "Settings" tab and then click "Reveal Config Vars".
 Here we can securely tell Heroku which variables are required. These can be found in the "env.py" file and are as follows:
-* Key: IP, Value: 0.0.0.0 
-* Key: PORT, Value: 5000 
-* Key: SECRET_KEY, Value: Randomly Generated key
-* Key: MONGO_URI, Value: MongoDB URI
-* Key: MONGO_DBNAME, Value: MongoDB Database Name
+| Key | Value |
+| :----: | :----: |
+| IP | 0.0.0.0 |
+| PORT | 5000 |
+| SECRET_KEY | Randomly Generated key |
+| MONGO_URI | Unique MongoDB URI |
+| MONGO_DBNAME | MongoDB Name |
+
 
 ### Forking the GitHub Repository 
 By forking the GitHub Repository, we make a copy of the original repository on our GitHub account. This allows us to view and/or make changes without
