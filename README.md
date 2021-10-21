@@ -374,7 +374,7 @@ Solution: As I could not find the solution to this problem myself, I posted on S
 
 The problem was that in my form I had inputted a value that had a small difference from the one in in my python function. To fix this, I just needed to change the name attribute to `updated-password` instead of `updated_password`
 
-* **Delete Category Modal only showing first category **
+* **Delete Category Modal only showing first category**
 
 Problem: The delete category function was working perfectly for the admin page. However, the function began to delete only the first category in the data set rather than their specific id once I added a modal to the page for defensive purposes. 
 
@@ -395,7 +395,7 @@ Delete <i class="far fa-trash-alt"></i>
 aria-labelledby="DeleteCatModalLabel" aria-hidden="true">
 ```
 
-* ** Jinja Error: "$search" had the wrong type. Expected string, found null" **
+* **Jinja Error: "$search" had the wrong type. Expected string, found null"**
 
 Problem: When creating the search functionality, I encountered a problem with my python search function that would display as a Jinja Error message reading "$search" had the wrong type. Expected string, found null".
 
