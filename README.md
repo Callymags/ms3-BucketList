@@ -306,4 +306,32 @@ As a software developer/recruiter, I want:
 * Users can't create an account with a username that is already in the database. 
 * Users can't create an account with an email that is already in the database. 
 
+### Responsive Design Testing
+The website layout was tested on the following physical devices: 
+* Huawei P20 Lite (Google Chrome)
+* iPad (Safari)
+* Fujitsu Lifebook A512 (Google Chrome)
+* Hp L1906 (Google Chrome)
 
+Google Chrome Developer Tools was also used to test the responsiveness of the site using the following devices. 
+* Moto G4 
+* Galaxy S5
+* Pixel 2 
+* Pixel 2 XL
+* iPhone 5/SE
+* iPhone 6/7/8
+* iPhone 6/7/8 Plus
+* iPhone X
+* iPad
+* iPad Pro
+* Surface Duo
+* Galaxy Fold
+* Nest Hub
+* Nest Hub Max
+
+### Browser Compatibility
+Browser compatibility was physically tested across the different browsers listed below: 
+* Google Chrome Version 89.0.43389.114
+* Microsoft Edge Version 89.0.774.68
+* Mozilla Firefox Version 87.0
+No problems were found
