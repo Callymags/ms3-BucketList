@@ -11,10 +11,10 @@
         integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous"
         type="text/css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}" type="text/css">
-    <link rel="icon" href="../static/images/favicon.ico">
     {% block styles %}
     {% endblock %}
     <title>Bucket List</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
 
 </head>
 

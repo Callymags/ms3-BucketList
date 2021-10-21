@@ -1,118 +1,118 @@
 {% extends "base.html" %}
 {% block content %}
-    <div class="container-fluid home-image-container">
-        <div class="row">
-            <div class="col-lg-6 col-md-8 offset-lg-3 offset-md-2">
-                <div class="jumbotron text-center">
-                    <h1 class="header-jumbotron pb-3">The perfect place to find and share bucket list ideas!</h1>
-                </div>
-            </div>
-    </div>
-    </div>
-    <!-- How it works section code copied from Milestone Project 1 -->
-    <section id="how-it-works-section" class="how-it-works">
-        <div class="container text-center">
-            <div class="row">
-                <div class="col-md-12 mt-4 mb-4">
-                    <h1 class="subheading pb-4"><strong>How it works</strong></h1>
-                </div>
-            </div>
-            <!-- Icon made by DinosoftLabs from "https://www.flaticon.com/authors/DinosoftLabs" -->
-            <div class="row four-steps">
-                <div class="col-md-6">
-                    <img class="four-steps-img" src="../static/images/clipboard-dinosoftlabs.png"
-                        alt="Clipboard icon with orange circular background">
-                </div>
-                <div class="col-md-6">
-                    <h5 class="pb-2 four-steps-header">Register</h5>
-                    <p>
-                        Register on the platform to create your profile. 
-                        You create your username and password when signing up.
-                    </p>
-                </div>
-            </div>
-            <hr>
-            <!-- Icon made by Good Ware from "https://www.flaticon.com/authors/good-ware" -->
-            <div class="row four-steps">
-                <div class="d-md-none col-md-6">
-                    <img class="four-steps-img" src="../static/images/search-good-ware.png"
-                        alt="Magnifying Glass icon with orange circular background">
-                </div>
-                <div class="col-md-6">
-                    <h5 class="pb-2 four-steps-header">Search Experiences</h5>
-                    <p>
-                        You can search for Bucket List ideas in the Experiences section. 
-                        This section of the website allows you to search for an experience by
-                        title, category, and by the latest and oldest experiences uploaded by users. 
-                    </p>
-                </div>
-                <div class="d-none d-md-block col-md-6">
-                    <img class="four-steps-img" src="../static/images/search-good-ware.png"
-                        alt="Magnifying Glass icon with orange circular background">
-                </div>
-            </div>
-            <hr>
-            <!-- Icon made by Round Icons from "https://www.flaticon.com/authors/roundicons" -->
-            <div class="row four-steps">
-                <div class="col-md-6">
-                    <img class="four-steps-img" src="../static/images/add-roundicons.png"
-                        alt="Addition icon with orange circular background">
-                </div>
-                <div class="col-md-6">
-                    <h5 class="pb-2 four-steps-header">Add to Bucket List</h5>
-                    <p>
-                        Once you have found an Experience that you like, you can add this 
-                        to your own customised Bucket List that can be viewed from your profile.
-                    </p>
-                </div>
-            </div>
-            <hr>
-            <!-- Icon made by Freepik from "https://www.flaticon.com/authors/freepik" -->
-            <div class="row four-steps">
-                <div class="d-md-none col-md-6">
-                    <img class="four-steps-img" src="../static/images/idea-freepik.png"
-                        alt="Lightbulb icon with orange circular background">
-                </div>
-                <div class="col-md-6">
-                    <h5 class="pb-2 four-steps-header">Create Experiences</h5>
-                    <p>
-                        Create experiences on the site that can be seen by the rest of the Bucket List 
-                        community
-                    </p>
-                </div>
-                <div class="d-none d-md-block col-md-6">
-                    <img class="four-steps-img" src="../static/images/idea-freepik.png"
-                        alt="Speech bubble icon with green circular background">
-                </div>
+<div class="container-fluid home-image-container">
+    <div class="row">
+        <div class="col-lg-6 col-md-8 offset-lg-3 offset-md-2">
+            <div class="jumbotron text-center">
+                <h1 class="header-jumbotron pb-3">The perfect place to find and share bucket list ideas!</h1>
             </div>
         </div>
-    </section>
-    <div class="container experiences-container"> 
-        <h1 class="text-center subheading"><strong>Latest Entries</strong></h1>
-        <div class="row">
-            {% for experience in experiences %}
-                <div class="col-lg-3 col-md-6 col-sm-12">
-                        <div class="card experience-card text-center">
-                            <img src=" {{ experience.img_address }}" class="card-img-top exp-image" alt="Image of experience">
-                            <div class="card-body">
-                                <h3 class="card-title exp-title text-center">{{ experience.experience_name }}</h3>
-                                <span class="badge navy-btn">{{ experience.category_name }}</span>
-                                <p class="">Added by: {{ experience.added_by }}</p>
-                                <div class="row buttons-bottom">
-                                    <div class="col">
-                                        <a class="btn btn-large exp-button" href="{{ url_for('experience.exp_info', exp_id=experience._id) }}" 
-                                        data-bs-toggle="tooltip" data-bs-placement="top" title="See Information">
-                                            <i class="fas fa-info-circle icon-button-style"></i>
-                                        </a>
-                                    </div>
-                                    
-                                </div>
-                            </div>
+    </div>
+</div>
+<!-- How it works section code copied from Milestone Project 1 -->
+<div class="container text-center">
+    <div class="row">
+        <div class="col-md-12 mt-4 mb-4">
+            <h1 class="subheading pb-4"><strong>How it works</strong></h1>
+        </div>
+    </div>
+    <!-- Icon made by DinosoftLabs from "https://www.flaticon.com/authors/DinosoftLabs" -->
+    <div class="row four-steps">
+        <div class="col-md-6">
+            <img class="four-steps-img" src="../static/images/clipboard-dinosoftlabs.png"
+                alt="Clipboard icon with orange circular background">
+        </div>
+        <div class="col-md-6">
+            <h5 class="pb-2 four-steps-header">Register</h5>
+            <p>
+                Register on the platform to create your profile.
+                You create your username and password when signing up.
+            </p>
+        </div>
+    </div>
+    <hr>
+    <!-- Icon made by Good Ware from "https://www.flaticon.com/authors/good-ware" -->
+    <div class="row four-steps">
+        <div class="d-md-none col-md-6">
+            <img class="four-steps-img" src="../static/images/search-good-ware.png"
+                alt="Magnifying Glass icon with orange circular background">
+        </div>
+        <div class="col-md-6">
+            <h5 class="pb-2 four-steps-header">Search Experiences</h5>
+            <p>
+                You can search for Bucket List ideas in the Experiences section.
+                This section of the website allows you to search for an experience by
+                title, category, and by the latest and oldest experiences uploaded by users.
+            </p>
+        </div>
+        <div class="d-none d-md-block col-md-6">
+            <img class="four-steps-img" src="../static/images/search-good-ware.png"
+                alt="Magnifying Glass icon with orange circular background">
+        </div>
+    </div>
+    <hr>
+    <!-- Icon made by Round Icons from "https://www.flaticon.com/authors/roundicons" -->
+    <div class="row four-steps">
+        <div class="col-md-6">
+            <img class="four-steps-img" src="../static/images/add-roundicons.png"
+                alt="Addition icon with orange circular background">
+        </div>
+        <div class="col-md-6">
+            <h5 class="pb-2 four-steps-header">Add to Bucket List</h5>
+            <p>
+                Once you have found an Experience that you like, you can add this
+                to your own customised Bucket List that can be viewed from your profile.
+            </p>
+        </div>
+    </div>
+    <hr>
+    <!-- Icon made by Freepik from "https://www.flaticon.com/authors/freepik" -->
+    <div class="row four-steps">
+        <div class="d-md-none col-md-6">
+            <img class="four-steps-img" src="../static/images/idea-freepik.png"
+                alt="Lightbulb icon with orange circular background">
+        </div>
+        <div class="col-md-6">
+            <h5 class="pb-2 four-steps-header">Create Experiences</h5>
+            <p>
+                Create experiences on the site that can be seen by the rest of the Bucket List
+                community
+            </p>
+        </div>
+        <div class="d-none d-md-block col-md-6">
+            <img class="four-steps-img" src="../static/images/idea-freepik.png"
+                alt="Speech bubble icon with green circular background">
+        </div>
+    </div>
+    <hr>
+</div>
+<div class="container experiences-container">
+    <h1 class="text-center subheading"><strong>Latest Entries</strong></h1>
+    <div class="row">
+        {% for experience in experiences %}
+        <div class="col-lg-3 col-md-6 col-sm-12">
+            <div class="card experience-card text-center">
+                <img src=" {{ experience.img_address }}" class="card-img-top exp-image" alt="Image of experience">
+                <div class="card-body">
+                    <h3 class="card-title exp-title text-center">{{ experience.experience_name }}</h3>
+                    <span class="badge navy-btn">{{ experience.category_name }}</span>
+                    <p class="">Added by: {{ experience.added_by }}</p>
+                    <div class="row buttons-bottom">
+                        <div class="col">
+                            <a class="btn btn-large exp-button"
+                                href="{{ url_for('experience.exp_info', exp_id=experience._id) }}"
+                                data-bs-toggle="tooltip" data-bs-placement="top" title="See Information">
+                                <i class="fas fa-info-circle icon-button-style"></i>
+                            </a>
                         </div>
-                    
+
+                    </div>
                 </div>
-            {% endfor %}
+            </div>
+
         </div>
+        {% endfor %}
     </div>
-    
+</div>
+
 {% endblock %}
