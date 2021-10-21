@@ -471,6 +471,7 @@ I used Heroku to deploy a live version of the site. Below are the steps of the d
 6. Click "Connect" to the correct repository.
 7. Click the "Settings" tab and then click "Reveal Config Vars".
 Here we can securely tell Heroku which variables are required. These can be found in the "env.py" file and are as follows:
+
 | Key | Value |
 | :----: | :----: |
 | IP | 0.0.0.0 |
