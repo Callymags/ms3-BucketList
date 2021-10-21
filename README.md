@@ -353,3 +353,67 @@ I tested the site’s performance with the help of [Lighthouse](https://develope
 * [Add Category Page](static/images/lighthouse-performance/add-category-lighthouse-perf.jpg)
 
 I was happy that all pages had a relatively high score.
+
+### Code Validation 
+1. HTML validated using [W3C Markup Service](https://validator.w3.org/). 
+2. CSS code validated using [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/).
+3. Python code validated using [Extend Class Python Validator](https://extendsclass.com/python-tester.html)
+
+
+## Bugs Encountered 
+* **AttributeError: 'NoneType' object has no attribute 'encode'**
+Problem: When clicking the update button on the update password page, I would get a Jinja Attribute error that was targeting the section of my update_password function below 
+
+```
+updated_password = generate_password_hash(request.form.get('updated-password'))
+
+```
+
+Solution: As I could not find the solution to this problem myself, I posted on Stack Overflow asking for help. You can view the thread on the following link [here.](https://stackoverflow.com/questions/69235978/python-error-attributeerror-nonetype-object-has-no-attribute-encode)
+
+The problem was that in my form I had inputted a value that had a small difference from the one in in my python function. To fix this, I just needed to change the name attribute to `updated-password` instead of `updated_password`
+
+* **Delete Category Modal only showing first category **
+
+Problem: The delete category function was working perfectly for the admin page. However, the function began to delete only the first category in the data set rather than their specific id once I added a modal to the page for defensive purposes. 
+
+The following html code was used when trying to add the functionality
+
+```
+<button type="button" data-bs-toggle="modal" data-bs-target='#deleteCatModal' class="btn btn-large orange-btn">
+    Delete <i class="far fa-trash-alt"></i></button>
+<div class="modal fade" id="deleteCatModal" tabindex="-1" aria-labelledby="deleteCatModalLabel" aria-hidden="true">
+```
+Solution: The reason the button trigger was only targeting the first card in the data set was because I did not enter a unique id for each of the modals. After realising this, I updated the `data-bs-target` and the `modal id`. You can see the update in the code below
+```
+<button type="button" class="btn btn-large orange-btn" data-bs-toggle="modal"
+data-bs-target='#deleteCatModal{{ category._id }}'>
+Delete <i class="far fa-trash-alt"></i>
+</button>
+<div class="modal fade" id="deleteCatModal{{ category._id }}" tabindex="-1"
+aria-labelledby="DeleteCatModalLabel" aria-hidden="true">
+```
+
+* ** Jinja Error: "$search" had the wrong type. Expected string, found null" **
+Problem: When creating the search functionality, I encountered a problem with my python search function that would display as a Jinja Error message reading "$search" had the wrong type. Expected string, found null".
+
+The following python code was used when trying to add the functionality
+
+```
+@experience.route('/search', methods=['GET', 'POST'])
+def search():
+    query = request.form.get("query")
+    experiences = list(mongo.db.experiences.find({"$text": {"$search": query}}))
+    return render_template('search.html', experiences=experiences)
+```
+Solution: The reason for this error was that the function searched the database before the Experiences page would load. I needed to add a conditional if statement to my function to only search the database when a POST request was made. You can view the solution below
+
+```
+@experience.route('/search', methods=['GET', 'POST'])
+def search():
+    query = request.form.get("query", ‘’)
+    experiences = ''
+    if request.method == 'POST':
+        experiences = list(mongo.db.experiences.find({"$text": {"$search": query}}))
+    return render_template('search.html', experiences=experiences)
+```
