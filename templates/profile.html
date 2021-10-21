@@ -81,8 +81,7 @@
                                 <a class="btn btn-large" data-bs-toggle="tooltip" title="Remove from Bucket List"
                                     data-bs-placement="top"><i class="fas fa-minus-circle icon-button-style"></i></a>
                             </span>
-                            <a class="btn btn-large"
-                                href="{{ url_for('experience.exp_info', exp_id=bucket_list._id) }}"
+                            <a class="btn btn-large" href="{{ url_for('experience.exp_info', exp_id=bucket_list._id) }}"
                                 data-bs-toggle="tooltip" data-bs-placement="top" title="See Information">
                                 <i class="fas fa-info-circle icon-button-style"></i>
                             </a>
@@ -92,8 +91,8 @@
             </div>
         </div>
         <!-- REMOVE EXPERIENCE MODAL -->
-        <div class="modal fade" id="removeExpModal{{ bucket_list._id }}" tabindex="-1" aria-labelledby="removeExpModalLabel"
-            aria-hidden="true">
+        <div class="modal fade" id="removeExpModal{{ bucket_list._id }}" tabindex="-1"
+            aria-labelledby="removeExpModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -118,6 +117,7 @@
         {% endif %}
     </div>
 </div>
+</section>
 <div class="experiences-created-container container">
     <h1 class="text-center subheading"><strong>Experiences Created</strong></h1>
     <div class="row">
@@ -144,57 +144,55 @@
                     <div class="row buttons-bottom">
                         <div class="col">
                             {% if user_bucket_list %}
-                                {% if experience._id in user_bucket_list %}
-                                <span class="" data-bs-toggle="modal" data-bs-target='#removeExpModal{{experience._id}}'>
-                                    <a class="btn btn-large" data-bs-toggle="tooltip" title="Remove from Bucket List"
-                                        data-bs-placement="top"><i
-                                            class="fas fa-minus-circle icon-button-style"></i></a>
-                                </span>
-                                <!-- REMOVE EXPERIENCE MODAL -->
-                                <div class="modal fade" id="removeExpModal{{experience._id}}" tabindex="-1"
-                                    aria-labelledby="removeExpModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="removeExpModalLabel">Remove Experience</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <p>Are you sure you want to remove this experience from your Bucket
-                                                    List?
-                                                </p>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-large orange-btn"
-                                                    data-bs-dismiss="modal">Close</button>
-                                                <form method="POST" class='bucket-list-form'
-                                                    action="{{ url_for('experience.remove_bucket_list', exp_id=experience._id) }}">
-                                                    <button type="submit"
-                                                        class="btn btn-large orange-btn">Remove</button>
-                                                </form>
-                                            </div>
+                            {% if experience._id in user_bucket_list %}
+                            <span class="" data-bs-toggle="modal" data-bs-target='#removeExpModal{{experience._id}}'>
+                                <a class="btn btn-large" data-bs-toggle="tooltip" title="Remove from Bucket List"
+                                    data-bs-placement="top"><i class="fas fa-minus-circle icon-button-style"></i></a>
+                            </span>
+                            <!-- REMOVE EXPERIENCE MODAL -->
+                            <div class="modal fade" id="removeExpModal{{experience._id}}" tabindex="-1"
+                                aria-labelledby="removeExpModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="removeExpModalLabel">Remove Experience</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Are you sure you want to remove this experience from your Bucket
+                                                List?
+                                            </p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-large orange-btn"
+                                                data-bs-dismiss="modal">Close</button>
+                                            <form method="POST" class='bucket-list-form'
+                                                action="{{ url_for('experience.remove_bucket_list', exp_id=experience._id) }}">
+                                                <button type="submit" class="btn btn-large orange-btn">Remove</button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
-                                {% else %}
-                                <form method="POST" class='bucket-list-form'
-                                    action="{{ url_for('experience.add_bucket_list', exp_id=experience._id) }}">
-                                    <button type="submit" class="btn btn-large" data-bs-toggle="tooltip"
-                                        title="Add to Bucket List" data-bs-placement="top">
-                                        <i class="fas fa-plus-circle icon-button-style"></i>
-                                    </button>
-                                </form>
-                                {% endif %}
-                                {% else %}
-                                <form method="POST" class='bucket-list-form'
-                                    action="{{ url_for('experience.add_bucket_list', exp_id=experience._id) }}">
-                                    <button type="submit" class="btn btn-large" data-bs-toggle="tooltip"
-                                        title="Add to Bucket List" data-bs-placement="top">
-                                        <i class="fas fa-plus-circle icon-button-style"></i>
-                                    </button>
-                                </form>
-                                {% endif %}
+                            </div>
+                            {% else %}
+                            <form method="POST" class='bucket-list-form'
+                                action="{{ url_for('experience.add_bucket_list', exp_id=experience._id) }}">
+                                <button type="submit" class="btn btn-large" data-bs-toggle="tooltip"
+                                    title="Add to Bucket List" data-bs-placement="top">
+                                    <i class="fas fa-plus-circle icon-button-style"></i>
+                                </button>
+                            </form>
+                            {% endif %}
+                            {% else %}
+                            <form method="POST" class='bucket-list-form'
+                                action="{{ url_for('experience.add_bucket_list', exp_id=experience._id) }}">
+                                <button type="submit" class="btn btn-large" data-bs-toggle="tooltip"
+                                    title="Add to Bucket List" data-bs-placement="top">
+                                    <i class="fas fa-plus-circle icon-button-style"></i>
+                                </button>
+                            </form>
+                            {% endif %}
                             <a class="btn btn-large icon-button-style"
                                 href="{{ url_for('experience.exp_info', exp_id=experience._id) }}"
                                 data-bs-toggle="tooltip" data-bs-placement="top" title="See Information">
