@@ -509,8 +509,8 @@ affecting the original repository by using the following steps:
 * The following article allowed me to add title elements to the register form if users did not match the form requirements. It also allowed me to add a specific password pattern [View here.](https://www.w3schools.com/tags/att_input_pattern.asp)
 
 3. **YouTube**
-•	The following video explained how python blueprints work and allowed me to set up the blueprints in the separate python files. [View here.](https://www.youtube.com/watch?v=WteIH6J9v64)  
-•	The following video helped me to vertically centre the content on my custom error pages.
+*	The following video explained how python blueprints work and allowed me to set up the blueprints in the separate python files. [View here.](https://www.youtube.com/watch?v=WteIH6J9v64)  
+*	The following video helped me to vertically centre the content on my custom error pages.
 [View here.](https://www.youtube.com/watch?v=qJVVZYTYA9U&t=362s)
 
 4. **Articles**
